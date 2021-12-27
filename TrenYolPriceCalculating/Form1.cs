@@ -13,6 +13,7 @@ namespace TrenYolPriceCalculating
     public partial class yenimar : Form
     {
         Product p = new Product();
+        ExcelClass ex = new ExcelClass();
         public yenimar()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace TrenYolPriceCalculating
         {
             p.pName = txtProductName.Text;
             p.supplyingPrice = numSupplyingPrice.Value;
-            p.trenyolComission = numTrenyolComission.Value;
+            p.trendyolComissionRate = numTrenyolComission.Value;
             p.cargoExpense = numCargoExpense.Value;
             p.KDV = numKDV.Value;
             p.profitRate = numProfitRate.Value;
@@ -72,6 +73,13 @@ namespace TrenYolPriceCalculating
         private void numProfitRate_Enter(object sender, EventArgs e)
         {
             numProfitRate.Select(0, numProfitRate.Text.Length);
+        }
+
+
+        
+        private void btnCreateExcell_Click(object sender, EventArgs e)
+        {
+            ex.ExportToExcel(p);
         }
     }
 }  

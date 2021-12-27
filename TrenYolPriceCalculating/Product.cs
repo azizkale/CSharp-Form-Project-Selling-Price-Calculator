@@ -10,7 +10,7 @@ namespace TrenYolPriceCalculating
     {
         public String pName { get; set; }
         public decimal supplyingPrice { get; set; }
-        public decimal trenyolComission { get; set; }
+        public decimal trendyolComissionRate { get; set; }
         public decimal KDV { get; set; }
         public decimal cargoExpense { get; set; }
         public decimal profitRate { get; set; }
@@ -29,7 +29,7 @@ namespace TrenYolPriceCalculating
         {
             this.totalExpenseAmount =
                 this.supplyingPrice +
-                  (this.supplyingPrice * this.trenyolComission / 100) +
+                  (this.supplyingPrice * this.trendyolComissionRate / 100) +
                   (this.supplyingPrice * (this.KDV / 100)) +
                 this.cargoExpense;
 
@@ -42,7 +42,7 @@ namespace TrenYolPriceCalculating
 
         public decimal calculateTrendyolComisssionExpenseAmount()
         {
-            this.trendyolComissionExpenseAmount = this.supplyingPrice * this.trenyolComission/100;
+            this.trendyolComissionExpenseAmount = this.supplyingPrice * this.trendyolComissionRate / 100;
             return trendyolComissionExpenseAmount;
         }
 

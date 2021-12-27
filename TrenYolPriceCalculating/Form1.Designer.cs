@@ -48,6 +48,7 @@
             this.lblCargoExpenseAmount = new System.Windows.Forms.Label();
             this.lblKDVAmount = new System.Windows.Forms.Label();
             this.lblProfitAmount = new System.Windows.Forms.Label();
+            this.btnCreateExcell = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numSupplyingPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCargoExpense)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKDV)).BeginInit();
@@ -162,7 +163,7 @@
             this.bynCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bynCalculate.Location = new System.Drawing.Point(15, 335);
             this.bynCalculate.Name = "bynCalculate";
-            this.bynCalculate.Size = new System.Drawing.Size(298, 58);
+            this.bynCalculate.Size = new System.Drawing.Size(188, 58);
             this.bynCalculate.TabIndex = 7;
             this.bynCalculate.Text = "HESAPLA";
             this.bynCalculate.UseVisualStyleBackColor = true;
@@ -183,6 +184,11 @@
             // 
             this.numSupplyingPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numSupplyingPrice.Location = new System.Drawing.Point(271, 109);
+            this.numSupplyingPrice.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numSupplyingPrice.Name = "numSupplyingPrice";
             this.numSupplyingPrice.Size = new System.Drawing.Size(144, 26);
             this.numSupplyingPrice.TabIndex = 2;
@@ -192,6 +198,11 @@
             // 
             this.numCargoExpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numCargoExpense.Location = new System.Drawing.Point(271, 185);
+            this.numCargoExpense.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numCargoExpense.Name = "numCargoExpense";
             this.numCargoExpense.Size = new System.Drawing.Size(144, 26);
             this.numCargoExpense.TabIndex = 4;
@@ -201,6 +212,11 @@
             // 
             this.numKDV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numKDV.Location = new System.Drawing.Point(271, 225);
+            this.numKDV.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numKDV.Name = "numKDV";
             this.numKDV.Size = new System.Drawing.Size(144, 26);
             this.numKDV.TabIndex = 5;
@@ -210,6 +226,11 @@
             // 
             this.numProfitRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numProfitRate.Location = new System.Drawing.Point(271, 263);
+            this.numProfitRate.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numProfitRate.Name = "numProfitRate";
             this.numProfitRate.Size = new System.Drawing.Size(144, 26);
             this.numProfitRate.TabIndex = 6;
@@ -219,6 +240,11 @@
             // 
             this.numTrenyolComission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numTrenyolComission.Location = new System.Drawing.Point(271, 146);
+            this.numTrenyolComission.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numTrenyolComission.Name = "numTrenyolComission";
             this.numTrenyolComission.Size = new System.Drawing.Size(144, 26);
             this.numTrenyolComission.TabIndex = 3;
@@ -264,6 +290,17 @@
             this.lblProfitAmount.Size = new System.Drawing.Size(0, 20);
             this.lblProfitAmount.TabIndex = 2;
             // 
+            // btnCreateExcell
+            // 
+            this.btnCreateExcell.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateExcell.Location = new System.Drawing.Point(227, 335);
+            this.btnCreateExcell.Name = "btnCreateExcell";
+            this.btnCreateExcell.Size = new System.Drawing.Size(188, 58);
+            this.btnCreateExcell.TabIndex = 8;
+            this.btnCreateExcell.Text = "Excell Dosyası Oluştur";
+            this.btnCreateExcell.UseVisualStyleBackColor = true;
+            this.btnCreateExcell.Click += new System.EventHandler(this.btnCreateExcell_Click);
+            // 
             // yenimar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +311,7 @@
             this.Controls.Add(this.numTrenyolComission);
             this.Controls.Add(this.numCargoExpense);
             this.Controls.Add(this.numSupplyingPrice);
+            this.Controls.Add(this.btnCreateExcell);
             this.Controls.Add(this.bynCalculate);
             this.Controls.Add(this.lblSellingPriceAmount);
             this.Controls.Add(this.lblSatisFiyatiLabel);
@@ -324,6 +362,7 @@
         private System.Windows.Forms.Label lblCargoExpenseAmount;
         private System.Windows.Forms.Label lblKDVAmount;
         private System.Windows.Forms.Label lblProfitAmount;
+        private System.Windows.Forms.Button btnCreateExcell;
     }
 }
 
