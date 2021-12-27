@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrentExcelFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrentExcelFile.Designer.cs">
+      <DependentUpon>CurrentExcelFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExcelClass.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -56,6 +62,9 @@
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CurrentExcelFile.resx">
+      <DependentUpon>CurrentExcelFile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -49,6 +49,7 @@
             this.lblKDVAmount = new System.Windows.Forms.Label();
             this.lblProfitAmount = new System.Windows.Forms.Label();
             this.btnCreateExcell = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numSupplyingPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCargoExpense)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKDV)).BeginInit();
@@ -301,11 +302,22 @@
             this.btnCreateExcell.UseVisualStyleBackColor = true;
             this.btnCreateExcell.Click += new System.EventHandler(this.btnCreateExcell_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(440, 370);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // yenimar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 457);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.numProfitRate);
             this.Controls.Add(this.numKDV);
             this.Controls.Add(this.numTrenyolComission);
@@ -363,6 +375,7 @@
         private System.Windows.Forms.Label lblKDVAmount;
         private System.Windows.Forms.Label lblProfitAmount;
         private System.Windows.Forms.Button btnCreateExcell;
+        private System.Windows.Forms.Button button1;
     }
 }
 

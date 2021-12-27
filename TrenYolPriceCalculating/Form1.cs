@@ -81,5 +81,11 @@ namespace TrenYolPriceCalculating
         {
             ex.ExportToExcel(p);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CurrentExcelFile f = new CurrentExcelFile();
+            f.ShowDialog();
+        }
     }
 }  
