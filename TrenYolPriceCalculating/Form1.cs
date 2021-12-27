@@ -30,12 +30,16 @@ namespace TrenYolPriceCalculating
 
             lblSellingPriceAmount.Text = p.calculateSellingPrice().ToString()+" TL";
 
-            lblTrenyolComissionAmount.Text = p.calculateTrendyolComisssionExpenseAmount().ToString();
+            lblTrenyolComissionAmount.Text = p.calculateTrendyolComisssionExpenseAmount().ToString() + " TL";
 
-            lblKDVAmount.Text = p.calculateKDVExpenseAmount().ToString();
+            lblKDVAmount.Text = p.calculateKDVExpenseAmount().ToString() + " TL";
 
-            lblProfitAmount.Text = p.calculateprofitAmount().ToString();
-            
+            lblProfitAmount.Text = p.calculateprofitAmount().ToString() + " TL";
+
+            lblCargoExpenseAmount.Text = p.cargoExpense.ToString() + " TL";
+
+            showSellingAndgPrice_Labels();
+
         }
 
         void showSellingAndgPrice_Labels()

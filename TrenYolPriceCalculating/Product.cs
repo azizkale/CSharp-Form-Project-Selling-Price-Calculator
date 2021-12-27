@@ -24,6 +24,7 @@ namespace TrenYolPriceCalculating
         //Profit Amount
         public decimal profitAmount { get; set; }
 
+        //Methods
         public decimal calculateSellingPrice()
         {
             this.totalExpenseAmount =
@@ -32,7 +33,7 @@ namespace TrenYolPriceCalculating
                   (this.supplyingPrice * (this.KDV / 100)) +
                 this.cargoExpense;
 
-            this.profitAmount = this.totalExpenseAmount + this.totalExpenseAmount * this.profitRate;
+            this.profitAmount = this.totalExpenseAmount * this.profitRate/100;
 
             this.sellingingPrice = this.profitAmount + this.totalExpenseAmount;
 
@@ -53,7 +54,7 @@ namespace TrenYolPriceCalculating
 
         public decimal calculateprofitAmount()
         {
-            this.profitAmount =  this.totalExpenseAmount * this.profitRate;
+            this.profitAmount =  this.totalExpenseAmount * this.profitRate/100;
             return this.profitAmount;
         }      
     }

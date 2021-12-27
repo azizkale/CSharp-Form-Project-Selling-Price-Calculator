@@ -137,7 +137,7 @@
             this.lblSatisFiyatiLabel.AutoSize = true;
             this.lblSatisFiyatiLabel.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSatisFiyatiLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lblSatisFiyatiLabel.Location = new System.Drawing.Point(175, 423);
+            this.lblSatisFiyatiLabel.Location = new System.Drawing.Point(8, 423);
             this.lblSatisFiyatiLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSatisFiyatiLabel.Name = "lblSatisFiyatiLabel";
             this.lblSatisFiyatiLabel.Size = new System.Drawing.Size(121, 20);
@@ -150,7 +150,7 @@
             this.lblSellingPriceAmount.AutoSize = true;
             this.lblSellingPriceAmount.Font = new System.Drawing.Font("NSimSun", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSellingPriceAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lblSellingPriceAmount.Location = new System.Drawing.Point(309, 414);
+            this.lblSellingPriceAmount.Location = new System.Drawing.Point(221, 414);
             this.lblSellingPriceAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSellingPriceAmount.Name = "lblSellingPriceAmount";
             this.lblSellingPriceAmount.Size = new System.Drawing.Size(0, 29);
@@ -160,7 +160,7 @@
             // bynCalculate
             // 
             this.bynCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bynCalculate.Location = new System.Drawing.Point(117, 334);
+            this.bynCalculate.Location = new System.Drawing.Point(15, 335);
             this.bynCalculate.Name = "bynCalculate";
             this.bynCalculate.Size = new System.Drawing.Size(298, 58);
             this.bynCalculate.TabIndex = 7;
@@ -228,7 +228,7 @@
             // 
             this.lblTrenyolComissionAmount.AutoSize = true;
             this.lblTrenyolComissionAmount.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrenyolComissionAmount.Location = new System.Drawing.Point(435, 148);
+            this.lblTrenyolComissionAmount.Location = new System.Drawing.Point(427, 148);
             this.lblTrenyolComissionAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTrenyolComissionAmount.Name = "lblTrenyolComissionAmount";
             this.lblTrenyolComissionAmount.Size = new System.Drawing.Size(0, 20);
@@ -238,7 +238,7 @@
             // 
             this.lblCargoExpenseAmount.AutoSize = true;
             this.lblCargoExpenseAmount.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCargoExpenseAmount.Location = new System.Drawing.Point(435, 191);
+            this.lblCargoExpenseAmount.Location = new System.Drawing.Point(427, 191);
             this.lblCargoExpenseAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCargoExpenseAmount.Name = "lblCargoExpenseAmount";
             this.lblCargoExpenseAmount.Size = new System.Drawing.Size(0, 20);
@@ -248,7 +248,7 @@
             // 
             this.lblKDVAmount.AutoSize = true;
             this.lblKDVAmount.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKDVAmount.Location = new System.Drawing.Point(435, 231);
+            this.lblKDVAmount.Location = new System.Drawing.Point(427, 231);
             this.lblKDVAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblKDVAmount.Name = "lblKDVAmount";
             this.lblKDVAmount.Size = new System.Drawing.Size(0, 20);
@@ -258,7 +258,7 @@
             // 
             this.lblProfitAmount.AutoSize = true;
             this.lblProfitAmount.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProfitAmount.Location = new System.Drawing.Point(435, 269);
+            this.lblProfitAmount.Location = new System.Drawing.Point(427, 269);
             this.lblProfitAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProfitAmount.Name = "lblProfitAmount";
             this.lblProfitAmount.Size = new System.Drawing.Size(0, 20);
