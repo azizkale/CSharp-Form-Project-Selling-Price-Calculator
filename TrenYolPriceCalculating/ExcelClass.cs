@@ -16,7 +16,6 @@ namespace TrenYolPriceCalculating
         public DataTable createAndFillExcellColumns(Product product)
         {
             ExcelColumns excol = new ExcelColumns();
-            //this.table = new DataTable();
             excol.createExcelColumns(excelPageDataTableClass.dtExcel);
 
 

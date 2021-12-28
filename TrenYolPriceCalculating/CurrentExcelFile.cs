@@ -14,11 +14,7 @@ namespace TrenYolPriceCalculating
         {
             InitializeComponent();
             expage.LoadExcelFromPC(dataGridView1);
-        }
-        
-              
-
-       
+        }      
 
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {

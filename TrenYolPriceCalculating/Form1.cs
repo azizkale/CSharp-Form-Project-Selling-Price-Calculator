@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TrenYolPriceCalculating
@@ -83,7 +76,7 @@ namespace TrenYolPriceCalculating
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {            
             CurrentExcelFile f = new CurrentExcelFile();
             f.ShowDialog();
         }
@@ -102,6 +95,7 @@ namespace TrenYolPriceCalculating
                p.profitRate,
                p.profitAmount,
                p.sellingingPrice);
+
             ex.printToExcel();
         }
     }
