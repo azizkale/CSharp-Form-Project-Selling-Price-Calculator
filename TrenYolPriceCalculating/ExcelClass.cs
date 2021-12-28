@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TrenYolPriceCalculating
@@ -14,20 +10,19 @@ namespace TrenYolPriceCalculating
 
         public DataTable ExportToExcel(Product product)
         {
-            this.table = new DataTable();
-            this.table.Columns.Add("Ürün Adı", typeof(string));
-            this.table.Columns.Add("Alış Fiyatı", typeof(decimal));
-            this.table.Columns.Add("Trendyol Komisyon Oranı", typeof(decimal));
-            this.table.Columns.Add("Trendyol Komisyon Tutarı", typeof(string));
-            this.table.Columns.Add("KDV Oranı", typeof(decimal));
-            this.table.Columns.Add("KDV Tutarı", typeof(decimal));
-            this.table.Columns.Add("Kargo Gideri", typeof(decimal));
-            this.table.Columns.Add("Kar Oranı", typeof(decimal));
-            this.table.Columns.Add("Kar Tutarı", typeof(decimal));
-            this.table.Columns.Add("SATIŞ FİYATI", typeof(decimal));
+            createAndFillExcellColumns(product);
+            printToExcel();
+            return table;
+        }
 
-           
-            table.Rows.Add(
+        public void createAndFillExcellColumns(Product product)
+        {
+            ExcelColumns excol = new ExcelColumns();
+            this.table = new DataTable();
+            excol.createExcelColumns(this.table);
+
+
+            this.table.Rows.Add(
                 product.pName,
                 product.supplyingPrice,
                 product.trendyolComissionRate,
@@ -39,7 +34,11 @@ namespace TrenYolPriceCalculating
                 product.profitAmount,
                 product.sellingingPrice);
 
+          
+        }
 
+        public void printToExcel()
+        {
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
 
             Microsoft.Office.Interop.Excel.Workbook worKbooK = excel.Workbooks.Add(Type.Missing);
@@ -58,7 +57,7 @@ namespace TrenYolPriceCalculating
 
 
                 worKsheeT = (Microsoft.Office.Interop.Excel.Worksheet)worKbooK.ActiveSheet;
-                worKsheeT.Name = "Ürün Listesi";
+                worKsheeT.Name = "Sheet1";
 
 
 
@@ -116,10 +115,7 @@ namespace TrenYolPriceCalculating
                 worKbooK = null;
             }
 
-
-            return table;
         }
-
 
     }
 }

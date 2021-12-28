@@ -53,6 +53,7 @@
       <DependentUpon>CurrentExcelFile.cs</DependentUpon>
     </Compile>
     <Compile Include="ExcelClass.cs" />
+    <Compile Include="ExcelColumns.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
