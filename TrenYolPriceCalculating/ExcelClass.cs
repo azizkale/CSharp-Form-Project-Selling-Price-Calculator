@@ -15,7 +15,6 @@ namespace TrenYolPriceCalculating
         public DataTable ExportToExcel(Product product)
         {
             this.table = new DataTable();
-            //this.table.Columns.Add("ID", typeof(int));
             this.table.Columns.Add("Ürün Adı", typeof(string));
             this.table.Columns.Add("Alış Fiyatı", typeof(decimal));
             this.table.Columns.Add("Trendyol Komisyon Oranı", typeof(decimal));
