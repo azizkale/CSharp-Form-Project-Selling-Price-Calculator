@@ -8,6 +8,7 @@ namespace TrenYolPriceCalculating
 {
     class excelPageDataTableClass
     {
+        //only DataTable in the App
         public static DataTable dtExcel = new DataTable();
 
         public void LoadExcelFromPC(DataGridView dataGridView1)
@@ -44,6 +45,7 @@ namespace TrenYolPriceCalculating
                 conn = @"provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fileName + ";Extended Properties='Excel 8.0;HRD=Yes;IMEX=1';";//for below excel 2007
             else
                 conn = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileName + ";Extended Properties='Excel 12.0;HDR=Yes;IMEX=1';";//for above excel 2007
+
             using (OleDbConnection con = new OleDbConnection(conn))
             {
                 try

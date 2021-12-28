@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Data;
+using System.Data.OleDb;
+using System.IO;
 using System.Windows.Forms;
 
 namespace TrenYolPriceCalculating
@@ -7,6 +10,7 @@ namespace TrenYolPriceCalculating
     {
         Product p = new Product();
         ExcelClass ex = new ExcelClass();
+        excelPageDataTableClass expdtc = new excelPageDataTableClass();
         public yenimar()
         {
             InitializeComponent();
@@ -72,7 +76,39 @@ namespace TrenYolPriceCalculating
         
         private void btnCreateExcell_Click(object sender, EventArgs e)
         {
-            ex.ExportToExcel(p);
+            //to control whether the file already exist or not============
+
+            string filePath = "C:\\Users\\asus\\Documents\\Ürün Listesi.xlsx";
+            string fileExt = string.Empty;
+            fileExt = Path.GetExtension(filePath); //get the file extension  
+            string conn = string.Empty;
+            DataTable dtexcel = new DataTable();
+            if (fileExt.CompareTo(".xls") == 0)//compare the extension of the file
+                conn = @"provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel 8.0;HRD=Yes;IMEX=1';";//for below excel 2007
+            else
+                conn = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + ";Extended Properties='Excel 12.0;HDR=Yes;IMEX=1';";//for above excel 2007
+
+            using (OleDbConnection con = new OleDbConnection(conn))
+            {
+                try
+                {
+                    OleDbDataAdapter oleAdpt = new OleDbDataAdapter("select * from [Sheet1$]", con);//here we read data from sheet1
+                    oleAdpt.Fill(dtexcel);//fill excel data into dataTable
+
+                    // if already a file exist, user can create new file
+                    MessageBox.Show("Belgelerim Klasöründe 'Ürün Listesi.xlsx' adlı bir dosyanız zaten bulunmaktadır. Yeni bir dosya oluşturmak istiyorsanız bu dosyayı silmeniz veya başka bir klasöre taşımanız önerilir.");
+                }
+                catch (Exception exeption)
+                {
+                    //MessageBox.Show(exeption.Message.ToString());
+
+                    //if there is no file named "Ürün Listesi.xlsx", user can create one
+                    ex.ExportToExcel(p);
+                }
+            }
+
+
+           
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -13,6 +13,7 @@ namespace TrenYolPriceCalculating
         public CurrentExcelFile()
         {
             InitializeComponent();
+            //loading excel file
             expage.LoadExcelFromPC(dataGridView1);
         }      
 
