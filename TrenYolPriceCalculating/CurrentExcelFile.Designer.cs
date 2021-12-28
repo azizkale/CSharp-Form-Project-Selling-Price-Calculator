@@ -31,9 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.dosyaYükleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -56,20 +54,11 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dosyaYükleToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1049, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // dosyaYükleToolStripMenuItem
-            // 
-            this.dosyaYükleToolStripMenuItem.Name = "dosyaYükleToolStripMenuItem";
-            this.dosyaYükleToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
-            this.dosyaYükleToolStripMenuItem.Text = "Dosya Yükle";
-            this.dosyaYükleToolStripMenuItem.Click += new System.EventHandler(this.dosyaYükleToolStripMenuItem_Click);
             // 
             // CurrentExcelFile
             // 
@@ -81,8 +70,6 @@
             this.Name = "CurrentExcelFile";
             this.Text = "CurrentExcelFile";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,6 +79,5 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem dosyaYükleToolStripMenuItem;
     }
 }

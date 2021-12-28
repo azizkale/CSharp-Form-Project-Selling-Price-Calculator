@@ -87,5 +87,11 @@ namespace TrenYolPriceCalculating
             CurrentExcelFile f = new CurrentExcelFile();
             f.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataTable dt = excelPageDataTableClass.dtExcel;
+            dt.Rows.Add(ex.createAndFillExcellColumns(p).Rows);
+        }
     }
 }  

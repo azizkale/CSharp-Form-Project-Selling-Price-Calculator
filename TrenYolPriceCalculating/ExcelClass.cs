@@ -15,7 +15,7 @@ namespace TrenYolPriceCalculating
             return table;
         }
 
-        public void createAndFillExcellColumns(Product product)
+        public DataTable createAndFillExcellColumns(Product product)
         {
             ExcelColumns excol = new ExcelColumns();
             this.table = new DataTable();
@@ -34,7 +34,7 @@ namespace TrenYolPriceCalculating
                 product.profitAmount,
                 product.sellingingPrice);
 
-          
+            return this.table;          
         }
 
         public void printToExcel()
