@@ -90,8 +90,19 @@ namespace TrenYolPriceCalculating
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DataTable dt = excelPageDataTableClass.dtExcel;
-            dt.Rows.Add(ex.createAndFillExcellColumns(p).Rows);
+            // adds new product to current excell
+            excelPageDataTableClass.dtExcel.Rows.Add(
+               p.pName,
+               p.supplyingPrice,
+               p.trendyolComissionRate,
+               p.trendyolComissionExpenseAmount,
+               p.KDV,
+               p.kdvExpenseAmount,
+               p.cargoExpense,
+               p.profitRate,
+               p.profitAmount,
+               p.sellingingPrice);
+            ex.printToExcel();
         }
     }
 }  

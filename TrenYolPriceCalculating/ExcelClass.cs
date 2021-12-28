@@ -6,23 +6,21 @@ namespace TrenYolPriceCalculating
 {
     class ExcelClass: Product
     {
-        public DataTable table { get; set; }
-
         public DataTable ExportToExcel(Product product)
         {
             createAndFillExcellColumns(product);
             printToExcel();
-            return table;
+            return excelPageDataTableClass.dtExcel;
         }
 
         public DataTable createAndFillExcellColumns(Product product)
         {
             ExcelColumns excol = new ExcelColumns();
-            this.table = new DataTable();
-            excol.createExcelColumns(this.table);
+            //this.table = new DataTable();
+            excol.createExcelColumns(excelPageDataTableClass.dtExcel);
 
 
-            this.table.Rows.Add(
+            excelPageDataTableClass.dtExcel.Rows.Add(
                 product.pName,
                 product.supplyingPrice,
                 product.trendyolComissionRate,
@@ -34,7 +32,7 @@ namespace TrenYolPriceCalculating
                 product.profitAmount,
                 product.sellingingPrice);
 
-            return this.table;          
+            return excelPageDataTableClass.dtExcel;          
         }
 
         public void printToExcel()
@@ -64,24 +62,24 @@ namespace TrenYolPriceCalculating
                 int rowcount = 2; // table row count
 
                 //creating empty rows with border================
-                foreach (DataRow datarow in table.Rows)
+                foreach (DataRow datarow in excelPageDataTableClass.dtExcel.Rows)
                 {
                     rowcount += 1;
-                    for (int i = 1; i <= table.Columns.Count; i++)
+                    for (int i = 1; i <= excelPageDataTableClass.dtExcel.Columns.Count; i++)
                     {
                         if (rowcount == 3)
                         {
-                            worKsheeT.Cells[2, i] = table.Columns[i - 1].ColumnName;
+                            worKsheeT.Cells[2, i] = excelPageDataTableClass.dtExcel.Columns[i - 1].ColumnName;
                             worKsheeT.Cells.Font.Color = System.Drawing.Color.Black;
                         }
                         worKsheeT.Cells[rowcount, i] = datarow[i - 1].ToString();
                         if (rowcount > 3)
                         {
-                            if (i == table.Columns.Count)
+                            if (i == excelPageDataTableClass.dtExcel.Columns.Count)
                             {
                                 if (rowcount % 2 == 0)
                                 {
-                                    celLrangE = worKsheeT.Range[worKsheeT.Cells[rowcount, 1], worKsheeT.Cells[rowcount, table.Columns.Count]];
+                                    celLrangE = worKsheeT.Range[worKsheeT.Cells[rowcount, 1], worKsheeT.Cells[rowcount, excelPageDataTableClass.dtExcel.Columns.Count]];
                                 }
                             }
                         }
@@ -90,13 +88,13 @@ namespace TrenYolPriceCalculating
 
                 }
 
-                celLrangE = worKsheeT.Range[worKsheeT.Cells[1, 1], worKsheeT.Cells[rowcount, table.Columns.Count]];
+                celLrangE = worKsheeT.Range[worKsheeT.Cells[1, 1], worKsheeT.Cells[rowcount, excelPageDataTableClass.dtExcel.Columns.Count]];
                 celLrangE.EntireColumn.AutoFit();
                 Microsoft.Office.Interop.Excel.Borders border = celLrangE.Borders;
                 border.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
                 border.Weight = 2d;
 
-                celLrangE = worKsheeT.Range[worKsheeT.Cells[1, 1], worKsheeT.Cells[2, table.Columns.Count]];
+                celLrangE = worKsheeT.Range[worKsheeT.Cells[1, 1], worKsheeT.Cells[2, excelPageDataTableClass.dtExcel.Columns.Count]];
 
                 worKbooK.SaveAs("Ürün Listesi"); ;
                 worKbooK.Close();
