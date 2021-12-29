@@ -9,13 +9,12 @@ namespace TrenYolPriceCalculating
 {
     public partial class CurrentExcelFile : Form
     {
-        excelPageDataTableClass expage = new excelPageDataTableClass();
+        ReadingExcel expage = new ReadingExcel();
         public CurrentExcelFile()
         {
             InitializeComponent();
-            //loading excel file
-            expage.LoadExcelFromPC(dataGridView1);
-        }      
+            expage.LoadExcelFromPC(dataGridView1);//loading excel file
+        }
 
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {

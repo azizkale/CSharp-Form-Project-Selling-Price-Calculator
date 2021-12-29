@@ -9,8 +9,7 @@ namespace TrenYolPriceCalculating
     public partial class yenimar : Form
     {
         Product p = new Product();
-        ExcelClass ex = new ExcelClass();
-        excelPageDataTableClass expdtc = new excelPageDataTableClass();
+        CreatingExcel ex = new CreatingExcel();
         ProductValidator validator = new ProductValidator();
         bool calculatingControl = false; // controls whether at first being done calculating before adding new product
 
@@ -105,7 +104,7 @@ namespace TrenYolPriceCalculating
                 if (calculatingControl)
                 {
                     // adds new product to current excell
-                    excelPageDataTableClass.dtExcel.Rows.Add(
+                    ReadingExcel.dtExcel.Rows.Add(
                          p.pName,
                      p.supplyingPrice,
                      p.trendyolComissionRate,
@@ -118,7 +117,7 @@ namespace TrenYolPriceCalculating
                      p.totalExpenseAmount,
                      p.sellingingPrice);
 
-                    ex.printToExcel();
+                    //ex.printToExcel();
                 }
                 else
                     MessageBox.Show("Lütfen ilk önce ürünün fiyat hesaplamasını yapınız.");
