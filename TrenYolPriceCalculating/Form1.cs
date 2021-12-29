@@ -11,6 +11,8 @@ namespace TrenYolPriceCalculating
         Product p = new Product();
         ExcelClass ex = new ExcelClass();
         excelPageDataTableClass expdtc = new excelPageDataTableClass();
+        ProductValidator validator = new ProductValidator();
+        bool calculatingControl = false; // controls whether at first being done calculating before adding new product
 
         public yenimar()
         {
@@ -27,20 +29,19 @@ namespace TrenYolPriceCalculating
             p.cargoExpense = numCargoExpense.Value;
             p.KDV = numKDV.Value;
             p.profitRate = numProfitRate.Value;
-            p.calculateSellingPrice();
+            calculatingControl = true;
 
-            lblSellingPriceAmount.Text = p.calculateSellingPrice().ToString()+" TL";
+            if (validator.Validate(p))
+            {
+                p.calculateSellingPrice();
 
-            lblTrenyolComissionAmount.Text = p.calculateTrendyolComisssionExpenseAmount().ToString() + " TL";
-
-            lblKDVAmount.Text = p.calculateKDVExpenseAmount().ToString() + " TL";
-
-            lblProfitAmount.Text = p.calculateprofitAmount().ToString() + " TL";
-
-            lblCargoExpenseAmount.Text = p.cargoExpense.ToString() + " TL";
-
-            showSellingAndgPrice_Labels();
-
+                lblSellingPriceAmount.Text = p.calculateSellingPrice().ToString() + " TL";
+                lblTrenyolComissionAmount.Text = p.calculateTrendyolComisssionExpenseAmount().ToString() + " TL";
+                lblKDVAmount.Text = p.calculateKDVExpenseAmount().ToString() + " TL";
+                lblProfitAmount.Text = p.calculateprofitAmount().ToString() + " TL";
+                lblCargoExpenseAmount.Text = p.cargoExpense.ToString() + " TL";
+                showSellingAndgPrice_Labels();
+            }
         }
 
         void showSellingAndgPrice_Labels()
@@ -49,31 +50,7 @@ namespace TrenYolPriceCalculating
             lblSellingPriceAmount.Visible = true;
         }
        
-        private void numSupplyingPrice_Enter(object sender, EventArgs e)
-        {
-            numSupplyingPrice.Select(0, numSupplyingPrice.Text.Length);
-        }
-
-        private void numTrenyolComission_Enter(object sender, EventArgs e)
-        {
-            numTrenyolComission.Select(0, numTrenyolComission.Text.Length);
-        }
-
-        private void numCargoExpense_Enter(object sender, EventArgs e)
-        {
-            numCargoExpense.Select(0, numCargoExpense.Text.Length);
-        }
-
-        private void numKDV_Enter(object sender, EventArgs e)
-        {
-            numKDV.Select(0, numKDV.Text.Length);
-
-        }
-
-        private void numProfitRate_Enter(object sender, EventArgs e)
-        {
-            numProfitRate.Select(0, numProfitRate.Text.Length);
-        }
+       
 
         private void çıkışToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -123,20 +100,35 @@ namespace TrenYolPriceCalculating
 
         private void ürünEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // adds new product to current excell
-            excelPageDataTableClass.dtExcel.Rows.Add(
-               p.pName,
-               p.supplyingPrice,
-               p.trendyolComissionRate,
-               p.trendyolComissionExpenseAmount,
-               p.KDV,
-               p.kdvExpenseAmount,
-               p.cargoExpense,
-               p.profitRate,
-               p.profitAmount,
-               p.sellingingPrice);
+            try
+            {
+                if (calculatingControl)
+                {
+                    // adds new product to current excell
+                    excelPageDataTableClass.dtExcel.Rows.Add(
+                         p.pName,
+                     p.supplyingPrice,
+                     p.trendyolComissionRate,
+                     p.trendyolComissionExpenseAmount,
+                     p.KDV,
+                     p.kdvExpenseAmount,
+                     p.cargoExpense,
+                     p.profitRate,                    
+                     p.profitAmount, 
+                     p.totalExpenseAmount,
+                     p.sellingingPrice);
 
-            ex.printToExcel();
+                    ex.printToExcel();
+                }
+                else
+                    MessageBox.Show("Lütfen ilk önce ürünün fiyat hesaplamasını yapınız.");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+          
+            
         }
 
         private void temizleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -159,6 +151,32 @@ namespace TrenYolPriceCalculating
 
             lblSatisFiyatiLabel.Visible = false;
             lblSellingPriceAmount.Visible = false;
+        }
+
+        private void numSupplyingPrice_Enter(object sender, EventArgs e)
+        {
+            numSupplyingPrice.Select(0, numSupplyingPrice.Text.Length);
+        }
+
+        private void numTrenyolComission_Enter(object sender, EventArgs e)
+        {
+            numTrenyolComission.Select(0, numTrenyolComission.Text.Length);
+        }
+
+        private void numCargoExpense_Enter(object sender, EventArgs e)
+        {
+            numCargoExpense.Select(0, numCargoExpense.Text.Length);
+        }
+
+        private void numKDV_Enter(object sender, EventArgs e)
+        {
+            numKDV.Select(0, numKDV.Text.Length);
+
+        }
+
+        private void numProfitRate_Enter(object sender, EventArgs e)
+        {
+            numProfitRate.Select(0, numProfitRate.Text.Length);
         }
     }
 }  
