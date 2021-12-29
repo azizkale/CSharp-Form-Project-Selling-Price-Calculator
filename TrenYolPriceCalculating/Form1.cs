@@ -139,7 +139,7 @@ namespace TrenYolPriceCalculating
             ex.printToExcel();
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void temizleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             txtProductName.Text = "";
 
@@ -153,10 +153,10 @@ namespace TrenYolPriceCalculating
             lblProfitAmount.Text = "";
 
             numSupplyingPrice.Value = 0;
-            
+
             numTrenyolComission.Value = 0;
-            lblTrenyolComissionAmount.Text="";
-          
+            lblTrenyolComissionAmount.Text = "";
+
             lblSatisFiyatiLabel.Visible = false;
             lblSellingPriceAmount.Visible = false;
         }
