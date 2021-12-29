@@ -11,9 +11,12 @@ namespace TrenYolPriceCalculating
         Product p = new Product();
         ExcelClass ex = new ExcelClass();
         excelPageDataTableClass expdtc = new excelPageDataTableClass();
+
         public yenimar()
         {
             InitializeComponent();
+            lblSatisFiyatiLabel.Visible = false;
+            lblSellingPriceAmount.Visible = false;
         }       
 
         private void bynCalculate_Click(object sender, EventArgs e)
@@ -72,9 +75,12 @@ namespace TrenYolPriceCalculating
             numProfitRate.Select(0, numProfitRate.Text.Length);
         }
 
+        private void çıkışToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
-        
-        private void btnCreateExcell_Click(object sender, EventArgs e)
+        private void yeniDosyaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //to control whether the file already exist or not============
 
@@ -98,7 +104,7 @@ namespace TrenYolPriceCalculating
                     // if already a file exist, user can create new file
                     MessageBox.Show("Belgelerim Klasöründe 'Ürün Listesi.xlsx' adlı bir dosyanız zaten bulunmaktadır. Yeni bir dosya oluşturmak istiyorsanız bu dosyayı silmeniz veya başka bir klasöre taşımanız önerilir.");
                 }
-                catch (Exception exeption)
+                catch (Exception exception)
                 {
                     //MessageBox.Show(exeption.Message.ToString());
 
@@ -107,17 +113,15 @@ namespace TrenYolPriceCalculating
                 }
             }
 
-
-           
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {            
+        private void dosyayıAçToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             CurrentExcelFile f = new CurrentExcelFile();
             f.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ürünEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // adds new product to current excell
             excelPageDataTableClass.dtExcel.Rows.Add(
@@ -133,6 +137,28 @@ namespace TrenYolPriceCalculating
                p.sellingingPrice);
 
             ex.printToExcel();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtProductName.Text = "";
+
+            numCargoExpense.Value = 0;
+            lblCargoExpenseAmount.Text = "";
+
+            numKDV.Value = 0;
+            lblKDVAmount.Text = "";
+
+            numProfitRate.Value = 0;
+            lblProfitAmount.Text = "";
+
+            numSupplyingPrice.Value = 0;
+            
+            numTrenyolComission.Value = 0;
+            lblTrenyolComissionAmount.Text="";
+          
+            lblSatisFiyatiLabel.Visible = false;
+            lblSellingPriceAmount.Visible = false;
         }
     }
 }  
