@@ -28,8 +28,8 @@ namespace TrenYolPriceCalculating
             xlWorkBook = xlApp.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            // Columns creating
-            columns.excelFileColumns(xlWorkSheet,1); // creates only columns' names            
+            // Columns creating - creates only columns' names with turkish charachters            
+            columns.excelFileColumns(xlWorkSheet,2); 
 
             string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             xlWorkBook.SaveAs(DocumentsAndSettingsPath + "\\Ürünler.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
@@ -42,8 +42,6 @@ namespace TrenYolPriceCalculating
 
             MessageBox.Show("Excel file created , you can find the file " + DocumentsAndSettingsPath);
 
-            //createAndFillExcellColumns(product);
-            //printToExcel();
             return ReadingExcel.dtExcel;
         }
     }

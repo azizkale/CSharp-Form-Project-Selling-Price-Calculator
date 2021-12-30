@@ -26,6 +26,7 @@ namespace TrenYolPriceCalculating
                     ReadingExcel.dtExcel = ReadExcel(filePath, fileExt); //read excel file           
                     dataGridView1.Visible = true;
                     dataGridView1.RowTemplate.Height = 30;
+                    dataGridView1.ColumnHeadersVisible = false;
                     dataGridView1.DataSource = ReadingExcel.dtExcel;
                 }
                 catch (Exception ex)
