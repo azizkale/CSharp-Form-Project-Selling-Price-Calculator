@@ -8,6 +8,8 @@ namespace TrenYolPriceCalculating
 {
     class CreatingExcel
     {
+        ExcelFileColumns columns = new ExcelFileColumns();
+
         public DataTable ExportToExcel(Product product)
         {
             Excel.Application xlApp = new Excel.Application();
@@ -26,19 +28,8 @@ namespace TrenYolPriceCalculating
             xlWorkBook = xlApp.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            xlWorkSheet.Cells[1, 1] = "ID";
-            xlWorkSheet.Cells[1, 2] = "Ürün Adı";
-            xlWorkSheet.Cells[1, 3] = "Alış Fiyatı";
-            xlWorkSheet.Cells[1, 4] = "Trendyol Komisyon Oranı";
-            xlWorkSheet.Cells[1, 5] = "Trendyol Komisyon Tutarı";
-            xlWorkSheet.Cells[1, 6] = "KDV Oranı";
-            xlWorkSheet.Cells[1, 7] = "KDV Tutarı";
-            xlWorkSheet.Cells[1, 8] = "Kargo Gideri";
-            xlWorkSheet.Cells[1, 9] = "Kar Oranı";
-            xlWorkSheet.Cells[1, 10] = "Kar Tutarı";
-            xlWorkSheet.Cells[1, 11] = "Toplam Gider";
-            xlWorkSheet.Cells[1, 12] = "SATIŞ FİYATI";
-
+            // Columns creating
+            columns.excelFileColumns(xlWorkSheet,1); // creates only columns' names            
 
             string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             xlWorkBook.SaveAs(DocumentsAndSettingsPath + "\\Ürünler.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);

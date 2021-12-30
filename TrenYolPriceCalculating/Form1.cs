@@ -82,7 +82,6 @@ namespace TrenYolPriceCalculating
                 }
                 catch (Exception exception)
                 {
-                    //MessageBox.Show(exeption.Message.ToString());
 
                     //if there is no file named "Ürün Listesi.xlsx", user can create one
                     ex.ExportToExcel(p);
@@ -99,23 +98,27 @@ namespace TrenYolPriceCalculating
 
         private void ürünEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+            InsertNewRowToExcelFile ins = new InsertNewRowToExcelFile();
+            
             try
             {
                 if (calculatingControl)
                 {
+                    ins.insertNewRow(p);
                     // adds new product to current excell
-                    ReadingExcel.dtExcel.Rows.Add(
-                         p.pName,
-                     p.supplyingPrice,
-                     p.trendyolComissionRate,
-                     p.trendyolComissionExpenseAmount,
-                     p.KDV,
-                     p.kdvExpenseAmount,
-                     p.cargoExpense,
-                     p.profitRate,                    
-                     p.profitAmount, 
-                     p.totalExpenseAmount,
-                     p.sellingingPrice);
+                    //ReadingExcel.dtExcel.Rows.Add(
+                    //     p.pName,
+                    // p.supplyingPrice,
+                    // p.trendyolComissionRate,
+                    // p.trendyolComissionExpenseAmount,
+                    // p.KDV,
+                    // p.kdvExpenseAmount,
+                    // p.cargoExpense,
+                    // p.profitRate,                    
+                    // p.profitAmount, 
+                    // p.totalExpenseAmount,
+                    // p.sellingingPrice);
 
                     //ex.printToExcel();
                 }
