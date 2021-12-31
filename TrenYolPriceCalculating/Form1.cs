@@ -42,7 +42,7 @@ namespace TrenYolPriceCalculating
                 showSellingAndgPrice_Labels();
             }
         }
-
+      
         void showSellingAndgPrice_Labels()
         {
             lblSatisFiyatiLabel.Visible = true;

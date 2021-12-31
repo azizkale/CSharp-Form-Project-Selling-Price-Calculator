@@ -22,6 +22,7 @@ namespace TrenYolPriceCalculating
                 string sql = null;
                 MyConnection = new OleDbConnection("provider=Microsoft.Jet.OLEDB.4.0;Data Source="+ filePath + ";Extended Properties=Excel 8.0;");
                 MyConnection.Open();
+
                 myCommand.Connection = MyConnection;
                 sql = "Insert into [Sayfa1$] (ID," +
                     "Urun_Adi," +
@@ -34,10 +35,26 @@ namespace TrenYolPriceCalculating
                     "Kar_Orani," +
                     "Kar_Tutari," +
                     "Toplam_Gider," +
-                    "SATIS_FIYATI) values('7','asdgfdgdfd','2','7','asdgfdgdfd','2','7','asdgfdgdfd','2','7','asdgfdgdfd','2')";
+                    "SATIS_FIYATI) " +
+                    "values(" +
+                    "'"+generateID()+"'," +
+                    "'"+p.pName+"'," +
+                    "'"+p.supplyingPrice+"'," +
+                    "'"+p.trendyolComissionRate+"'," +
+                    "'"+p.trendyolComissionExpenseAmount+"'," +
+                    "'"+p.KDV+"'," +
+                    "'"+p.kdvExpenseAmount+"'," +
+                    "'"+p.cargoExpense+"'," +
+                    "'"+p.profitRate+"'," +
+                    "'"+p.profitAmount+"'," +
+                    "'"+p.totalExpenseAmount+"'," +
+                    "'"+p.sellingingPrice+"')";
+
                 myCommand.CommandText = sql;
                 myCommand.ExecuteNonQuery();
                 MyConnection.Close();
+
+                MessageBox.Show(p.pName + " adlı ürün başarı ile kaydedilmiştir.");
             }
             catch (Exception ex)
             {
@@ -45,5 +62,10 @@ namespace TrenYolPriceCalculating
             }         
 
         }
+        public string generateID()
+        {
+            return Guid.NewGuid().ToString("N");
+        }
     }
+   
 }

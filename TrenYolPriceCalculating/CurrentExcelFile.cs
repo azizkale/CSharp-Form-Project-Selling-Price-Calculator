@@ -1,8 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Data.OleDb;
-using System.Drawing;
-using System.IO;
+﻿using System.Drawing;
 
 using System.Windows.Forms;
 
@@ -20,12 +16,15 @@ namespace TrenYolPriceCalculating
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;//auto cell heights
+
             dataGridView1.Rows[0].DefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
-            dataGridView1.Visible = true;
+            dataGridView1.Columns[0].Visible = false; // hides the ID column
             dataGridView1.RowTemplate.Height = 30;
             dataGridView1.ColumnHeadersVisible = false;
             dataGridView1.Font = new Font("Tahoma", 12);
 
+            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;//wrapping text into cells
         }
     }
 }

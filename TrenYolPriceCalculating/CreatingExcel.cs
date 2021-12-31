@@ -18,7 +18,7 @@ namespace TrenYolPriceCalculating
             {
                 MessageBox.Show("Excel is not properly installed!!");
                 return null;
-            }            
+            }
 
             Excel.Workbook xlWorkBook;
             Excel.Worksheet xlWorkSheet;
