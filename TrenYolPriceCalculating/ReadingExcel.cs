@@ -26,11 +26,6 @@ namespace TrenYolPriceCalculating
                     ReadingExcel.dtExcel = new DataTable();
                     ReadingExcel.dtExcel = ReadExcel(filePath, fileExt); //read excel file           
                     dataGridView1.DataSource = ReadingExcel.dtExcel;
-
-                    
-                    
-
-
                 }
                 catch (Exception ex)
                 {

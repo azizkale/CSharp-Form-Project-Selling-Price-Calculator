@@ -57,37 +57,8 @@ namespace TrenYolPriceCalculating
         }
 
         private void yeniDosyaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //to control whether the file already exist or not============
-
-            string filePath = "C:\\Users\\asus\\Documents\\Ürün Listesi.xlsx";
-            string fileExt = string.Empty;
-            fileExt = Path.GetExtension(filePath); //get the file extension  
-            string conn = string.Empty;
-            DataTable dtexcel = new DataTable();
-            if (fileExt.CompareTo(".xls") == 0)//compare the extension of the file
-                conn = @"provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel 8.0;HRD=Yes;IMEX=1';";//for below excel 2007
-            else
-                conn = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + ";Extended Properties='Excel 12.0;HDR=Yes;IMEX=1';";//for above excel 2007
-
-            using (OleDbConnection con = new OleDbConnection(conn))
-            {
-                try
-                {
-                    OleDbDataAdapter oleAdpt = new OleDbDataAdapter("select * from [Sheet1$]", con);//here we read data from sheet1
-                    oleAdpt.Fill(dtexcel);//fill excel data into dataTable
-
-                    // if already a file exist, user can create new file
-                    MessageBox.Show("Belgelerim Klasöründe 'Ürün Listesi.xlsx' adlı bir dosyanız zaten bulunmaktadır. Yeni bir dosya oluşturmak istiyorsanız bu dosyayı silmeniz veya başka bir klasöre taşımanız önerilir.");
-                }
-                catch (Exception exception)
-                {
-
-                    //if there is no file named "Ürün Listesi.xlsx", user can create one
-                    ex.ExportToExcel(p);
-                }
-            }
-
+        {         
+            ex.createAndExportToExcel();
         }
 
         private void dosyayıAçToolStripMenuItem_Click(object sender, EventArgs e)
@@ -99,28 +70,12 @@ namespace TrenYolPriceCalculating
         private void ürünEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-            InsertNewRowToExcelFile ins = new InsertNewRowToExcelFile();
-            
+            InsertNewRowToExcelFile ins = new InsertNewRowToExcelFile();            
             try
             {
                 if (calculatingControl)
                 {
-                    ins.insertNewRow(p);
-                    // adds new product to current excell
-                    //ReadingExcel.dtExcel.Rows.Add(
-                    //     p.pName,
-                    // p.supplyingPrice,
-                    // p.trendyolComissionRate,
-                    // p.trendyolComissionExpenseAmount,
-                    // p.KDV,
-                    // p.kdvExpenseAmount,
-                    // p.cargoExpense,
-                    // p.profitRate,                    
-                    // p.profitAmount, 
-                    // p.totalExpenseAmount,
-                    // p.sellingingPrice);
-
-                    //ex.printToExcel();
+                    ins.insertNewRow(p);                   
                 }
                 else
                     MessageBox.Show("Lütfen ilk önce ürünün fiyat hesaplamasını yapınız.");
