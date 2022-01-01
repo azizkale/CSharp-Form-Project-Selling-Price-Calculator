@@ -64,7 +64,14 @@ namespace TrenYolPriceCalculating
         private void dosyayıAçToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CurrentExcelFile f = new CurrentExcelFile();
-            f.ShowDialog();
+            try
+            {
+                f.ShowDialog();
+            }
+            catch (Exception)
+            {
+            }
+           
         }
 
         private void ürünEkleToolStripMenuItem_Click(object sender, EventArgs e)

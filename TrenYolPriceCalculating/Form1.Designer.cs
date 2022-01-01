@@ -306,8 +306,8 @@
             this.toolStripSeparator4,
             this.çıkışToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(144, 29);
-            this.toolStripMenuItem1.Text = "&Dosya İşlemleri";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(74, 29);
+            this.toolStripMenuItem1.Text = "&Dosya";
             // 
             // toolStripSeparator1
             // 
@@ -318,7 +318,7 @@
             // 
             this.yeniDosyaToolStripMenuItem.Name = "yeniDosyaToolStripMenuItem";
             this.yeniDosyaToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
-            this.yeniDosyaToolStripMenuItem.Text = "Yeni Dosya";
+            this.yeniDosyaToolStripMenuItem.Text = "Dosya Oluştur";
             this.yeniDosyaToolStripMenuItem.Click += new System.EventHandler(this.yeniDosyaToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
@@ -363,18 +363,18 @@
             this.toolStripSeparator5,
             this.temizleToolStripMenuItem});
             this.formİşlemleriToolStripMenuItem.Name = "formİşlemleriToolStripMenuItem";
-            this.formİşlemleriToolStripMenuItem.Size = new System.Drawing.Size(136, 29);
-            this.formİşlemleriToolStripMenuItem.Text = "Form İşlemleri";
+            this.formİşlemleriToolStripMenuItem.Size = new System.Drawing.Size(66, 29);
+            this.formİşlemleriToolStripMenuItem.Text = "Form";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(249, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(150, 6);
             // 
             // temizleToolStripMenuItem
             // 
             this.temizleToolStripMenuItem.Name = "temizleToolStripMenuItem";
-            this.temizleToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.temizleToolStripMenuItem.Size = new System.Drawing.Size(153, 30);
             this.temizleToolStripMenuItem.Text = "Temizle";
             this.temizleToolStripMenuItem.Click += new System.EventHandler(this.temizleToolStripMenuItem_Click);
             // 

@@ -1,4 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Data;
+using System.Data.OleDb;
+using System.Drawing;
 
 using System.Windows.Forms;
 
@@ -24,7 +27,62 @@ namespace TrenYolPriceCalculating
             dataGridView1.ColumnHeadersVisible = false;
             dataGridView1.Font = new Font("Tahoma", 12);
 
-            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;//wrapping text into cells
+            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;//wrapping text into cells           
+
+        }
+
+        private void txtSearch_TextChanged(object sender, System.EventArgs e)
+        {
+            string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filePath = DocumentsAndSettingsPath + "\\Ürünler.xls";
+
+            try
+            {
+                OleDbConnection MyConnection;
+                OleDbCommand myCommand = new OleDbCommand();
+                string sql = null;
+                MyConnection = new OleDbConnection("provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties=Excel 8.0;");
+                MyConnection.Open();
+
+                myCommand.Connection = MyConnection;
+                sql = "Select * from [Sayfa1$] where Urun_Adi like '%" + txtSearch.Text + "%'";
+
+                DataTable dtexcel = new DataTable();
+                OleDbDataAdapter oleAdpt = new OleDbDataAdapter(sql,MyConnection);
+                oleAdpt.Fill(dtexcel);//fill excel data into dataTable
+                dataGridView1.DataSource = dtexcel;
+
+                myCommand.CommandText = sql;
+                myCommand.ExecuteNonQuery();
+                MyConnection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnClearSearchTextBox_Click(object sender, EventArgs e)
+        {
+            txtSearch.Text = "";
+        }       
+
+        
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+           
+            string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filePath = DocumentsAndSettingsPath + "\\Ürünler.xls";
+            string connetionString = null;
+
+            
+
+        }
+
+        private void dataGridView1_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
         }
     }
 }
