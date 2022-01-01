@@ -72,39 +72,10 @@ namespace TrenYolPriceCalculating
         }       
         
 
-        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+
+        private void güncelleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /* !!!!!!CODE BELOW WORKS WELL.!!!!! */
-           
-            //string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            //string filePath = DocumentsAndSettingsPath + "\\Ürünler.xls";
-            //try
-            //{
-            //    OleDbConnection MyConnection;
-            //    OleDbCommand myCommand = new OleDbCommand();
-            //    string sql = null;
-            //    MyConnection = new OleDbConnection("provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties=Excel 8.0;");
-            //    MyConnection.Open();
-
-            //    myCommand.Connection = MyConnection;
-            //    int columnindex = dataGridView1.CurrentCell.ColumnIndex;  
-                
-            //    sql = "update [Sayfa1$] set "+ dataGridView1.Rows[e.RowIndex].Cells[columnindex].OwningColumn.HeaderText + " = '" + dataGridView1.Rows[e.RowIndex].Cells[columnindex].Value.ToString() + "' where ID = '"+ dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "'";
-
-            //    OleDbDataAdapter oleAdpt = new OleDbDataAdapter(sql, MyConnection);
-            //    oleAdpt.UpdateCommand = MyConnection.CreateCommand();
-            //    oleAdpt.UpdateCommand.CommandText = sql;
-            //    oleAdpt.UpdateCommand.ExecuteNonQuery();               
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            productForUpdate = new Product();           
+            productForUpdate = new Product();
             try
             {
                 productForUpdate.pName = dataGridView1.SelectedRows[0].Cells["Urun_Adi"].Value.ToString();
@@ -124,7 +95,11 @@ namespace TrenYolPriceCalculating
             {
                 MessageBox.Show("Geçerli bir satırı tam olarak seçtiğinizden emin olnuz.");
             }
-          
+        }
+
+        private void silToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
