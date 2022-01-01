@@ -16,7 +16,7 @@ namespace TrenYolPriceCalculating
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new yenimar());
+            Application.Run(new yenimar(new Product()));
         }
     }
 }

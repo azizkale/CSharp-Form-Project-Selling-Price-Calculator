@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 
+
 using System.Windows.Forms;
 
 namespace TrenYolPriceCalculating
@@ -10,6 +11,8 @@ namespace TrenYolPriceCalculating
     public partial class CurrentExcelFile : Form
     {
         ReadingExcel expage = new ReadingExcel();
+        Product productForUpdate;
+
         public CurrentExcelFile()
         {
             InitializeComponent();
@@ -67,45 +70,63 @@ namespace TrenYolPriceCalculating
         {
             txtSearch.Text = "";
         }       
-
         
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            /* !!!!!!CODE BELOW WORKS WELL.!!!!! */
            
-            string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filePath = DocumentsAndSettingsPath + "\\Ürünler.xls";
+            //string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //string filePath = DocumentsAndSettingsPath + "\\Ürünler.xls";
+            //try
+            //{
+            //    OleDbConnection MyConnection;
+            //    OleDbCommand myCommand = new OleDbCommand();
+            //    string sql = null;
+            //    MyConnection = new OleDbConnection("provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties=Excel 8.0;");
+            //    MyConnection.Open();
+
+            //    myCommand.Connection = MyConnection;
+            //    int columnindex = dataGridView1.CurrentCell.ColumnIndex;  
+                
+            //    sql = "update [Sayfa1$] set "+ dataGridView1.Rows[e.RowIndex].Cells[columnindex].OwningColumn.HeaderText + " = '" + dataGridView1.Rows[e.RowIndex].Cells[columnindex].Value.ToString() + "' where ID = '"+ dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "'";
+
+            //    OleDbDataAdapter oleAdpt = new OleDbDataAdapter(sql, MyConnection);
+            //    oleAdpt.UpdateCommand = MyConnection.CreateCommand();
+            //    oleAdpt.UpdateCommand.CommandText = sql;
+            //    oleAdpt.UpdateCommand.ExecuteNonQuery();               
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            productForUpdate = new Product();           
             try
             {
-                OleDbConnection MyConnection;
-                OleDbCommand myCommand = new OleDbCommand();
-                string sql = null;
-                MyConnection = new OleDbConnection("provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties=Excel 8.0;");
-                MyConnection.Open();
+                productForUpdate.pName = dataGridView1.SelectedRows[0].Cells["Urun_Adi"].Value.ToString();
+                productForUpdate.supplyingPrice = Decimal.Parse(dataGridView1.SelectedRows[0].Cells["Alis_Fiyati"].Value.ToString());
+                productForUpdate.trendyolComissionRate = Decimal.Parse(dataGridView1.SelectedRows[0].Cells["Trendyol_Komisyon_Orani"].Value.ToString());
+                productForUpdate.cargoExpense = Decimal.Parse(dataGridView1.SelectedRows[0].Cells["Kargo_Gideri"].Value.ToString());
+                productForUpdate.KDV = Decimal.Parse(dataGridView1.SelectedRows[0].Cells["KDV_Orani"].Value.ToString());
+                productForUpdate.profitRate = Decimal.Parse(dataGridView1.SelectedRows[0].Cells["Kar_Orani"].Value.ToString());
+                productForUpdate.ID = dataGridView1.SelectedRows[0].Cells["ID"].Value.ToString();
 
-                myCommand.Connection = MyConnection;
+                this.Close(); // closes the product list window
 
-                //sql = "update [Sayfa1$] set Urun_Adi = 'velki' where ID = '15a0ce9ac46f41e388e1bb2382e84f0c'";
-
-                int columnindex = dataGridView1.CurrentCell.ColumnIndex;  
-                
-                sql = "update [Sayfa1$] set "+ dataGridView1.Rows[e.RowIndex].Cells[columnindex].OwningColumn.HeaderText + " = '" + dataGridView1.Rows[e.RowIndex].Cells[columnindex].Value.ToString() + "' where ID = '"+ dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "'";
-
-                OleDbDataAdapter oleAdpt = new OleDbDataAdapter(sql, MyConnection);
-                oleAdpt.UpdateCommand = MyConnection.CreateCommand();
-                oleAdpt.UpdateCommand.CommandText = sql;
-                oleAdpt.UpdateCommand.ExecuteNonQuery();
-                MessageBox.Show("Row(s) Updated !! ");
-
+                yenimar ye = new yenimar(productForUpdate);
+                ye.ShowDialog();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Geçerli bir satırı tam olarak seçtiğinizden emin olnuz.");
             }
-        }
-
-        private void dataGridView1_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
-        {
+          
         }
     }
+
+    
 }

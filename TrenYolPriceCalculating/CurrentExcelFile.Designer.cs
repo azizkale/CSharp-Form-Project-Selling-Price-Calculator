@@ -35,8 +35,10 @@
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.panelSearch = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClearSearchTextBox = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblUpdateReport = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,10 +61,10 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 48);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1574, 658);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
-            this.dataGridView1.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.dataGridView1_CellStateChanged);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             // 
             // menuStrip1
@@ -104,17 +106,6 @@
             this.panelSearch.Size = new System.Drawing.Size(590, 48);
             this.panelSearch.TabIndex = 6;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnClearSearchTextBox
             // 
             this.btnClearSearchTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -127,11 +118,45 @@
             this.btnClearSearchTextBox.UseVisualStyleBackColor = false;
             this.btnClearSearchTextBox.Click += new System.EventHandler(this.btnClearSearchTextBox_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblUpdateReport
+            // 
+            this.lblUpdateReport.AutoSize = true;
+            this.lblUpdateReport.BackColor = System.Drawing.Color.Lime;
+            this.lblUpdateReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpdateReport.ForeColor = System.Drawing.Color.White;
+            this.lblUpdateReport.Location = new System.Drawing.Point(1270, 12);
+            this.lblUpdateReport.Name = "lblUpdateReport";
+            this.lblUpdateReport.Size = new System.Drawing.Size(0, 25);
+            this.lblUpdateReport.TabIndex = 7;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(1043, 0);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(212, 48);
+            this.btnUpdate.TabIndex = 9;
+            this.btnUpdate.Text = "Ürün Güncelle";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
             // CurrentExcelFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1574, 706);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.lblUpdateReport);
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
@@ -158,5 +183,7 @@
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnClearSearchTextBox;
+        private System.Windows.Forms.Label lblUpdateReport;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 
@@ -8,39 +9,60 @@ namespace TrenYolPriceCalculating
 {
     public partial class yenimar : Form
     {
-        Product p = new Product();
+        Product pCalculate = new Product();
+        Product pUpdate = new Product();
         CreatingExcel ex = new CreatingExcel();
         ProductValidator validator = new ProductValidator();
+        ReadingExcel readExcel = new ReadingExcel();
         bool calculatingControl = false; // controls whether at first being done calculating before adding new product
 
-        public yenimar()
+
+        public yenimar(Product pFromCurrentExcelFile)
         {
             InitializeComponent();
+            //
             lblSatisFiyatiLabel.Visible = false;
             lblSellingPriceAmount.Visible = false;
+            btnProductUpdate.Visible = false;
+
+            // to update product
+            if(pFromCurrentExcelFile.ID != null)
+            {
+                this.pUpdate = pFromCurrentExcelFile;
+
+                txtProductName.Text = pFromCurrentExcelFile.pName;
+                numSupplyingPrice.Value = pFromCurrentExcelFile.supplyingPrice;
+                numTrenyolComission.Value = pFromCurrentExcelFile.trendyolComissionRate;
+                numCargoExpense.Value = pFromCurrentExcelFile.cargoExpense;
+                numKDV.Value = pFromCurrentExcelFile.KDV;
+                numProfitRate.Value = pFromCurrentExcelFile.profitRate;
+
+                btnProductUpdate.Visible = true;
+            }
         }       
 
         private void bynCalculate_Click(object sender, EventArgs e)
         {
-            p.pName = txtProductName.Text;
-            p.supplyingPrice = numSupplyingPrice.Value;
-            p.trendyolComissionRate = numTrenyolComission.Value;
-            p.cargoExpense = numCargoExpense.Value;
-            p.KDV = numKDV.Value;
-            p.profitRate = numProfitRate.Value;
-            calculatingControl = true;
+            calculateProductsValues(pCalculate);
+            //pCalculate.pName = txtProductName.Text;
+            //pCalculate.supplyingPrice = numSupplyingPrice.Value;
+            //pCalculate.trendyolComissionRate = numTrenyolComission.Value;
+            //pCalculate.cargoExpense = numCargoExpense.Value;
+            //pCalculate.KDV = numKDV.Value;
+            //pCalculate.profitRate = numProfitRate.Value;
+            //calculatingControl = true;
 
-            if (validator.Validate(p))
-            {
-                p.calculateSellingPrice();
+            //if (validator.Validate(pCalculate))
+            //{
+            //    pCalculate.calculateSellingPrice();
 
-                lblSellingPriceAmount.Text = p.calculateSellingPrice().ToString() + " TL";
-                lblTrenyolComissionAmount.Text = p.calculateTrendyolComisssionExpenseAmount().ToString() + " TL";
-                lblKDVAmount.Text = p.calculateKDVExpenseAmount().ToString() + " TL";
-                lblProfitAmount.Text = p.calculateprofitAmount().ToString() + " TL";
-                lblCargoExpenseAmount.Text = p.cargoExpense.ToString() + " TL";
-                showSellingAndgPrice_Labels();
-            }
+            //    lblSellingPriceAmount.Text = pCalculate.calculateSellingPrice().ToString() + " TL";
+            //    lblTrenyolComissionAmount.Text = pCalculate.calculateTrendyolComisssionExpenseAmount().ToString() + " TL";
+            //    lblKDVAmount.Text = pCalculate.calculateKDVExpenseAmount().ToString() + " TL";
+            //    lblProfitAmount.Text = pCalculate.calculateprofitAmount().ToString() + " TL";
+            //    lblCargoExpenseAmount.Text = pCalculate.cargoExpense.ToString() + " TL";
+            //    showSellingAndgPrice_Labels();
+            //}
         }
       
         void showSellingAndgPrice_Labels()
@@ -49,6 +71,28 @@ namespace TrenYolPriceCalculating
             lblSellingPriceAmount.Visible = true;
         }
        
+        void calculateProductsValues(Product product)
+        {
+            product.pName = txtProductName.Text;
+            product.supplyingPrice = numSupplyingPrice.Value;
+            product.trendyolComissionRate = numTrenyolComission.Value;
+            product.cargoExpense = numCargoExpense.Value;
+            product.KDV = numKDV.Value;
+            product.profitRate = numProfitRate.Value;
+            calculatingControl = true;
+
+            if (validator.Validate(product))
+            {
+                product.calculateSellingPrice();
+
+                lblSellingPriceAmount.Text = product.calculateSellingPrice().ToString() + " TL";
+                lblTrenyolComissionAmount.Text = product.calculateTrendyolComisssionExpenseAmount().ToString() + " TL";
+                lblKDVAmount.Text = product.calculateKDVExpenseAmount().ToString() + " TL";
+                lblProfitAmount.Text = product.calculateprofitAmount().ToString() + " TL";
+                lblCargoExpenseAmount.Text = product.cargoExpense.ToString() + " TL";
+                showSellingAndgPrice_Labels();
+            }
+        }
        
 
         private void çıkışToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,28 +116,7 @@ namespace TrenYolPriceCalculating
             {
             }
            
-        }
-
-        private void ürünEkleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            InsertNewRowToExcelFile ins = new InsertNewRowToExcelFile();            
-            try
-            {
-                if (calculatingControl)
-                {
-                    ins.insertNewRow(p);                   
-                }
-                else
-                    MessageBox.Show("Lütfen ilk önce ürünün fiyat hesaplamasını yapınız.");
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
-            }
-          
-            
-        }
+        }      
 
         private void temizleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -116,6 +139,25 @@ namespace TrenYolPriceCalculating
             lblSatisFiyatiLabel.Visible = false;
             lblSellingPriceAmount.Visible = false;
         }
+
+        private void ürünEkleToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            InsertNewRowToExcelFile ins = new InsertNewRowToExcelFile();
+            try
+            {
+                if (calculatingControl)
+                {
+                    ins.insertNewRow(pCalculate);
+                }
+                else
+                    MessageBox.Show("Lütfen ilk önce ürünün fiyat hesaplamasını yapınız.");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
 
         private void numSupplyingPrice_Enter(object sender, EventArgs e)
         {
@@ -141,6 +183,47 @@ namespace TrenYolPriceCalculating
         private void numProfitRate_Enter(object sender, EventArgs e)
         {
             numProfitRate.Select(0, numProfitRate.Text.Length);
+        }
+
+        private void btnProductUpdate_Click(object sender, EventArgs e)
+        {            
+            calculateProductsValues(this.pUpdate);
+
+            string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filePath = DocumentsAndSettingsPath + "\\Ürünler.xls";
+            string fileExt = string.Empty;
+           
+            try{
+                OleDbConnection MyConnection;
+                OleDbCommand myCommand = new OleDbCommand();
+                string sql = null;
+                MyConnection = new OleDbConnection("provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties=Excel 8.0;");
+                MyConnection.Open();
+
+                myCommand.Connection = MyConnection;
+
+                sql = "update [Sayfa1$] set " +
+                    "Urun_Adi = '"+txtProductName.Text+"'," +
+                    "Alis_Fiyati = '"+pUpdate.supplyingPrice+"'," +
+                    " Trendyol_Komisyon_Orani = '"+pUpdate.trendyolComissionRate+"'," +
+                    "Trendyol_Komisyon_Tutari = '"+ pUpdate.calculateTrendyolComisssionExpenseAmount() + "'," +
+                    "KDV_Orani = '"+numKDV.Value+"'," +
+                    "KDV_Tutari = '"+ pUpdate.calculateKDVExpenseAmount() + "'," +
+                    "Kargo_Gideri = '"+this.pUpdate.cargoExpense+"'," +
+                    "Kar_Orani = '"+pUpdate.profitRate+"'," +
+                    "Kar_Tutari = '"+ pUpdate.calculateprofitAmount() + "'," +
+                    "Toplam_Gider = '"+pUpdate.totalExpenseAmount+"'," +
+                    "SATIS_FIYATI = '"+ pUpdate.calculateSellingPrice().ToString() + "'  where ID = '" + this.pUpdate.ID +"'";
+
+                OleDbDataAdapter oleAdpt = new OleDbDataAdapter(sql, MyConnection);
+                oleAdpt.UpdateCommand = MyConnection.CreateCommand();
+                oleAdpt.UpdateCommand.CommandText = sql;
+                oleAdpt.UpdateCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }  

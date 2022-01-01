@@ -3,8 +3,9 @@ using TrenYolPriceCalculating;
 
 namespace TrenYolPriceCalculating
 {
-    class Product
+    public class Product
     {
+        public string ID { get; set; }
         public string pName { get; set; }
         public decimal supplyingPrice { get; set; }
         public decimal trendyolComissionRate { get; set; }
