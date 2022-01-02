@@ -24,16 +24,16 @@ namespace TrenYolPriceCalculating
             //these are turkish column names
             worksheet.Cells[rowNumber, 1] = "ID";
             worksheet.Cells[rowNumber, 2] = "Ürün Adı";
-            worksheet.Cells[rowNumber, 3] = "Alış Fiyatı";
-            worksheet.Cells[rowNumber, 4] = "Trendyol Komisyon Oranı";
-            worksheet.Cells[rowNumber, 5] = "Trendyol Komisyon Tutarı";
-            worksheet.Cells[rowNumber, 6] = "KDV Oranı";
-            worksheet.Cells[rowNumber, 7] = "KDV Tutarı";
-            worksheet.Cells[rowNumber, 8] = "Kargo Gideri";
-            worksheet.Cells[rowNumber, 9] = "Kar Oranı";
-            worksheet.Cells[rowNumber, 10] = "Kar Tutarı";
-            worksheet.Cells[rowNumber, 11] = "Toplam Gider";
-            worksheet.Cells[rowNumber, 12] = "SATIŞ FİYATI";            
+            worksheet.Cells[rowNumber, 3] = "Alış Fiyatı" + "\n" +"(TL)";
+            worksheet.Cells[rowNumber, 4] = "Trendyol Komisyon Oranı" + "\n" + "(%)";
+            worksheet.Cells[rowNumber, 5] = "Trendyol Komisyon Tutarı" + "\n" + "(TL)";
+            worksheet.Cells[rowNumber, 6] = "KDV Oranı" + "\n" + "(%)";
+            worksheet.Cells[rowNumber, 7] = "KDV Tutarı" + "\n" + "(TL)";
+            worksheet.Cells[rowNumber, 8] = "Kargo Gideri" + "\n" + "(TL)";
+            worksheet.Cells[rowNumber, 9] = "Kar Oranı" + "\n" + "(%)";
+            worksheet.Cells[rowNumber, 10] = "Kar Tutarı" + "\n" + "(TL)";
+            worksheet.Cells[rowNumber, 11] = "Toplam Gider" + "\n" + "(TL)";
+            worksheet.Cells[rowNumber, 12] = "SATIŞ FİYATI" + "\n" + "(TL)";            
             return worksheet;
         }
     }

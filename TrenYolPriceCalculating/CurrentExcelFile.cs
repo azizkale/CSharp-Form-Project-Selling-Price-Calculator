@@ -32,8 +32,17 @@ namespace TrenYolPriceCalculating
             dataGridView1.ColumnHeadersVisible = false;
             dataGridView1.Font = new Font("Tahoma", 12);
 
-            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;//wrapping text into cells           
+            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;//wrapping text into cells 
 
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                if(i%2 == 0)
+                    dataGridView1.Columns[i].DefaultCellStyle.BackColor = Color.Beige;
+                else
+                    dataGridView1.Columns[i].DefaultCellStyle.BackColor = Color.Bisque;
+            }
+
+            dataGridView1.Columns[dataGridView1.Columns.Count-1].DefaultCellStyle.BackColor = Color.Turquoise;
         }
 
         private void txtSearch_TextChanged(object sender, System.EventArgs e)
