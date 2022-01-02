@@ -18,29 +18,36 @@ namespace TrenYolPriceCalculating
             string filePath = PCDocumentAndSettingsPath.filePath;
             string fileExt = string.Empty;
 
-            fileExt = Path.GetExtension(filePath); //get the file extension  
-            if (fileExt.CompareTo(".xls") == 0 || fileExt.CompareTo(".xls") == 0)
+            fileExt = Path.GetExtension(filePath); //get the file extension 
+            if (CommonFunctions.controlTheFileExistBeforeInsertProduct(PCDocumentAndSettingsPath.filePath))
             {
-                try
+                if (fileExt.CompareTo(".xls") == 0 || fileExt.CompareTo(".xls") == 0)
                 {
-                    ReadingExcel.dtExcel = new DataTable();
-                    ReadingExcel.dtExcel = ReadExcel(filePath, fileExt); //read excel file           
-                    dataGridView1.DataSource = ReadingExcel.dtExcel;
+                    try
+                    {
+                        ReadingExcel.dtExcel = new DataTable();
+                        ReadingExcel.dtExcel = ReadExcel(filePath, fileExt); //read excel file           
+                        dataGridView1.DataSource = ReadingExcel.dtExcel;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                    MessageBox.Show("Please choose .xls or .xlsx file only.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error); //custom messageBox to show error  
                 }
             }
             else
             {
-                MessageBox.Show("Please choose .xls or .xlsx file only.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error); //custom messageBox to show error  
+                MessageBox.Show("Önce dosya oluşturmalısınız.");
             }
         }
 
 
         public DataTable ReadExcel(string fileName, string fileExt)
-        {
+        {                    
             string conn = string.Empty;
             DataTable dtexcel = new DataTable();
             if (fileExt.CompareTo(".xlsx") == 0)//compare the extension of the file
@@ -60,7 +67,7 @@ namespace TrenYolPriceCalculating
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
-            return dtexcel;
+            return dtExcel;
         }
     }
 }

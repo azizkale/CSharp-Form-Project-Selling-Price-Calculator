@@ -79,8 +79,7 @@ namespace TrenYolPriceCalculating
                 lblCargoExpenseAmount.Text = product.cargoExpense.ToString() + " TL";
                 showSellingAndgPrice_Labels();
             }
-        }
-       
+        }       
 
         private void çıkışToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -94,15 +93,20 @@ namespace TrenYolPriceCalculating
 
         private void dosyayıAçToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CurrentExcelFile f = new CurrentExcelFile();
-            try
-            {
-                f.ShowDialog();
-            }
-            catch (Exception)
-            {
-            }
-           
+            //if (CommonFunctions.controlTheFileExistBeforeInsertProduct(PCDocumentAndSettingsPath.filePath))
+            //{
+                CurrentExcelFile f = new CurrentExcelFile();
+                try
+                {
+                    f.ShowDialog();
+                }
+                catch (Exception)
+                {
+                }
+            //}
+            //else            
+            //    MessageBox.Show("Önce bir dosya oluşturmalısnız.");
+            
         }      
 
         private void temizleToolStripMenuItem_Click(object sender, EventArgs e)

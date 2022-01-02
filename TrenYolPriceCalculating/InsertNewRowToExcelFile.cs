@@ -18,7 +18,7 @@ namespace TrenYolPriceCalculating
             string filePath = PCDocumentAndSettingsPath.filePath;
             string fileExt = string.Empty;
 
-            if (controlTheFileExistBeforeInsertProduct(filePath))
+            if (CommonFunctions.controlTheFileExistBeforeInsertProduct(filePath))
             {
                 try
                 {
@@ -78,11 +78,7 @@ namespace TrenYolPriceCalculating
         {
             return Guid.NewGuid().ToString("N");
         }
-
-        private bool controlTheFileExistBeforeInsertProduct(string path)
-        {
-            return File.Exists(path);
-        }
+       
     }
    
 }

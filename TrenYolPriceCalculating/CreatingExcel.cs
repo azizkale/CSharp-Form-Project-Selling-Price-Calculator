@@ -2,8 +2,9 @@
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Data;
-using System;
 using TrenYolPriceCalculating.Classes_CommonValues;
+using System.IO;
+using System;
 
 namespace TrenYolPriceCalculating
 {
@@ -13,59 +14,64 @@ namespace TrenYolPriceCalculating
 
         public DataTable createAndExportToExcel()
         {
-            Excel.Application xlApp = new Excel.Application();
-
-            if (xlApp == null)
-            {
-                MessageBox.Show("Excel is not properly installed!!");
-                return null;
-            }
-
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
             string DocumentsAndSettingsPath = PCDocumentAndSettingsPath.DocumentsAndSettingsPath;
+            string filePath = PCDocumentAndSettingsPath.filePath;
 
-            xlWorkBook = xlApp.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            
-            // Columns creating - creates only columns' names with turkish charachters            
-            columns.excelFileColumns(xlWorkSheet,2);
-
-            //Controls if the file that is wanted to create is already exist=====
-            try
+            //if there is no file in PC
+            if (!CommonFunctions.controlTheFileExistBeforeInsertProduct(filePath))
             {
-                // reads the file if it already exist
-                xlWorkBook = xlApp.Workbooks.Open(DocumentsAndSettingsPath + "\\Ürünler.xls", 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                try
+                {                    
+                    Excel.Application xlApp = new Excel.Application();
 
-                MessageBox.Show(DocumentsAndSettingsPath + "\\Ürünler.xls" + " yolunda zaten bir dosyanız bulunmaktadır.");
-            }
-            catch
-            {
-                // creates the file============
-                DialogResult dialogResult = MessageBox.Show("Sure", "Some Title", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    xlWorkBook.SaveAs(DocumentsAndSettingsPath + "\\Ürünler.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                    xlWorkBook.Close(true, misValue, misValue);
-                    xlApp.Quit();
+                    if (xlApp == null)
+                    {
+                        MessageBox.Show("Excel is not properly installed!!");
+                        return null;
+                    }
 
-                    Marshal.ReleaseComObject(xlWorkSheet);
-                    Marshal.ReleaseComObject(xlWorkBook);
-                    Marshal.ReleaseComObject(xlApp);
+                    Excel.Workbook xlWorkBook;
+                    Excel.Worksheet xlWorkSheet;
+                    object misValue = System.Reflection.Missing.Value;
 
-                    MessageBox.Show("Excel file created , you can find the file " + DocumentsAndSettingsPath);
+                    xlWorkBook = xlApp.Workbooks.Add(misValue);
+                    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                    // Columns creating - creates only columns' names with turkish charachters            
+                    columns.excelFileColumns(xlWorkSheet, 2);
+
+                    // creates the file============
+                    DialogResult dialogResult = MessageBox.Show("Yeni bir dosya oluşturmak üzeresiniz. Devam etmek istiyor musunuz?", "", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        xlWorkBook.SaveAs(filePath, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                        xlWorkBook.Close(true, misValue, misValue);
+                        xlApp.Quit();
+
+                        Marshal.ReleaseComObject(xlWorkSheet);
+                        Marshal.ReleaseComObject(xlWorkBook);
+                        Marshal.ReleaseComObject(xlApp);
+
+                        MessageBox.Show("Dosyanız " + DocumentsAndSettingsPath + " yolunda başarı ile oluşturuldu.");
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        return null;
+                    }
+                    
+                    
                 }
-                else if (dialogResult == DialogResult.No)
+                catch (Exception ex)
                 {
-                    return null;
+                    MessageBox.Show(ex.ToString());
                 }
-
-                //================== creates the file END =============================
             }
-            //===== Controls if the file that is wanted to create is already exist END ==========
+            else
+                MessageBox.Show(DocumentsAndSettingsPath + " yolunda zaten bir dosyanız mevcut.");
 
             return ReadingExcel.dtExcel;
-        }      
+        }
+
+        
     }
 }
