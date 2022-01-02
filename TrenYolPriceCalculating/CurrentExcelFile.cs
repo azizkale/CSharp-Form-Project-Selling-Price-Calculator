@@ -102,71 +102,77 @@ namespace TrenYolPriceCalculating
         {
             string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Ürünler.xls";
 
+            if(dataGridView1.CurrentCell.RowIndex == 0)
+            {
+                MessageBox.Show("Başlık satırı silinemez.");
+            }
+
+            else if ( dataGridView1.CurrentCell.RowIndex != 0)
+            {
+                Excel.Application xlexcel;
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet xlWorkSheet;
+                Excel.Range xlRange;
+                object misValue = System.Reflection.Missing.Value;
+                xlexcel = new Excel.Application();
+
+                xlexcel.Visible = true;
+
+                //~~>  Open a File
+                xlWorkBook = xlexcel.Workbooks.Open(DocumentsAndSettingsPath, 0, false, 5, "", "", true,
+                Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+
+                //~~> Work with Sheet1
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                //determines the row that be wanted to delete
+                xlRange = (Excel.Range)xlWorkSheet.Cells[dataGridView1.CurrentCell.RowIndex + 2, 1];
+                
+                //~~> Remove any filters if there are
+                xlWorkSheet.AutoFilterMode = false;
 
 
-            Excel.Application xlexcel;
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            Excel.Range xlRange;
-            //Excel.Range xlFilteredRange;
-            object misValue = System.Reflection.Missing.Value;
-            xlexcel = new Excel.Application();
+                //~~> Delete the range in one go
+                xlRange.EntireRow.Delete(Excel.XlDirection.xlToRight);
 
-            xlexcel.Visible = true;
+                //~~> Remove filters
+                xlWorkSheet.AutoFilterMode = false;
 
-            //~~>  Open a File
-            xlWorkBook = xlexcel.Workbooks.Open(DocumentsAndSettingsPath, 0, false, 5, "", "", true,
-            Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                //~~> Close and cleanup
+                xlWorkBook.Close(true, misValue, misValue);
+                xlexcel.Quit();
 
-            //~~> Work with Sheet1
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorkSheet);
+                Marshal.ReleaseComObject(xlWorkBook);
+                Marshal.ReleaseComObject(xlexcel);
 
-
-            xlRange = (Excel.Range)xlWorkSheet.Cells[4, 1];
-
+                //the file is loaded again after deleting
+                expage.LoadExcelFromPC(dataGridView1);
+            }
            
-
-            //~~> Remove any filters if there are
-            xlWorkSheet.AutoFilterMode = false;
-
-
-            //~~> Delete the range in one go
-            xlRange.EntireRow.Delete(Excel.XlDirection.xlToRight);
-
-            //~~> Remove filters
-            xlWorkSheet.AutoFilterMode = false;
-
-            //~~> Close and cleanup
-            xlWorkBook.Close(true, misValue, misValue);
-            xlexcel.Quit();
-
-            releaseObject(xlRange);
-            //releaseObject(xlFilteredRange);
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlexcel);
         }
 
-        private void releaseObject(object obj)
-        {
-            try
-            {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
-            }
-            catch (Exception ex)
-            {
-                obj = null;
-                MessageBox.Show("Unable to release the Object " + ex.ToString());
-            }
-            finally
-            {
-                GC.Collect();
-            }
+        //private void releaseObject(object obj)
+        //{
+        //    try
+        //    {
+        //        System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+        //        obj = null;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        obj = null;
+        //        MessageBox.Show("Unable to release the Object " + ex.ToString());
+        //    }
+        //    finally
+        //    {
+        //        GC.Collect();
+        //    }
 
 
 
-        }
+        //}
     }
     
 }
