@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Data;
 using System.Data.OleDb;
-using System.Data.SqlClient;
-using System.IO;
 using System.Windows.Forms;
 
 namespace TrenYolPriceCalculating
@@ -201,6 +198,11 @@ namespace TrenYolPriceCalculating
                 oleAdpt.UpdateCommand = MyConnection.CreateCommand();
                 oleAdpt.UpdateCommand.CommandText = sql;
                 oleAdpt.UpdateCommand.ExecuteNonQuery();
+                MyConnection.Close();
+
+                CurrentExcelFile cef = new CurrentExcelFile();
+                cef.ShowDialog();
+                this.Close();
             }
             catch (Exception ex)
             {

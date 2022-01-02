@@ -87,15 +87,16 @@ namespace TrenYolPriceCalculating
                 productForUpdate.profitRate = Decimal.Parse(dataGridView1.SelectedRows[0].Cells["Kar_Orani"].Value.ToString());
                 productForUpdate.ID = dataGridView1.SelectedRows[0].Cells["ID"].Value.ToString();
 
-                this.Close(); // closes the product list window
-
+              
                 yenimar ye = new yenimar(productForUpdate);
                 ye.ShowDialog();
+                this.Close(); // closes the product list window
             }
             catch (Exception)
             {
                 MessageBox.Show("Geçerli bir satırı tam olarak seçtiğinizden emin olnuz.");
             }
+            
         }
 
         private void silToolStripMenuItem_Click(object sender, EventArgs e)
@@ -152,27 +153,7 @@ namespace TrenYolPriceCalculating
             }
            
         }
-
-        //private void releaseObject(object obj)
-        //{
-        //    try
-        //    {
-        //        System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-        //        obj = null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        obj = null;
-        //        MessageBox.Show("Unable to release the Object " + ex.ToString());
-        //    }
-        //    finally
-        //    {
-        //        GC.Collect();
-        //    }
-
-
-
-        //}
+        
     }
     
 }
