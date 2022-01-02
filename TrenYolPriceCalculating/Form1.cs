@@ -93,8 +93,8 @@ namespace TrenYolPriceCalculating
 
         private void dosyayıAçToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (CommonFunctions.controlTheFileExistBeforeInsertProduct(PCDocumentAndSettingsPath.filePath))
-            //{
+            if (CommonFunctions.controlTheFileExistBeforeInsertProduct(PCDocumentAndSettingsPath.filePath))
+            {
                 CurrentExcelFile f = new CurrentExcelFile();
                 try
                 {
@@ -103,10 +103,10 @@ namespace TrenYolPriceCalculating
                 catch (Exception)
                 {
                 }
-            //}
-            //else            
-            //    MessageBox.Show("Önce bir dosya oluşturmalısnız.");
-            
+            }
+            else
+                MessageBox.Show("Önce bir dosya oluşturmalısnız.");
+
         }      
 
         private void temizleToolStripMenuItem_Click(object sender, EventArgs e)
