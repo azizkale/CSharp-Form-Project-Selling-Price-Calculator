@@ -18,7 +18,9 @@ namespace TrenYolPriceCalculating
         public yenimar(Product pFromCurrentExcelFile)
         {
             InitializeComponent();
-            
+
+            //
+            this.AcceptButton = bynCalculate;
             //
             lblSatisFiyatiLabel.Visible = false;
             lblSellingPriceAmount.Visible = false;
@@ -43,6 +45,7 @@ namespace TrenYolPriceCalculating
                 numProfitRate.Value = pFromCurrentExcelFile.profitRate;
 
                 btnProductUpdate.Visible = true;
+                this.AcceptButton = btnProductUpdate;
             }
         }       
 

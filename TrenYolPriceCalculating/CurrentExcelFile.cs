@@ -34,15 +34,20 @@ namespace TrenYolPriceCalculating
 
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;//wrapping text into cells 
 
+            // to color the columns
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                if(i%2 == 0)
+                if (i % 2 == 0)
                     dataGridView1.Columns[i].DefaultCellStyle.BackColor = Color.Beige;
                 else
                     dataGridView1.Columns[i].DefaultCellStyle.BackColor = Color.Bisque;
             }
 
-            dataGridView1.Columns[dataGridView1.Columns.Count-1].DefaultCellStyle.BackColor = Color.Turquoise;
+            // colorss the last colum with different color
+            dataGridView1.Columns[dataGridView1.Columns.Count - 1].DefaultCellStyle.BackColor = Color.Turquoise;
+
+            //define the color of the selectedRow
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.MediumAquamarine;
         }
 
         private void txtSearch_TextChanged(object sender, System.EventArgs e)
@@ -162,7 +167,7 @@ namespace TrenYolPriceCalculating
                 expage.LoadExcelFromPC(dataGridView1);
             }
            
-        }
+        }        
         
     }
     
