@@ -44,25 +44,7 @@ namespace TrenYolPriceCalculating
         private void bynCalculate_Click(object sender, EventArgs e)
         {
             calculateProductsValues(pCalculate);
-            //pCalculate.pName = txtProductName.Text;
-            //pCalculate.supplyingPrice = numSupplyingPrice.Value;
-            //pCalculate.trendyolComissionRate = numTrenyolComission.Value;
-            //pCalculate.cargoExpense = numCargoExpense.Value;
-            //pCalculate.KDV = numKDV.Value;
-            //pCalculate.profitRate = numProfitRate.Value;
-            //calculatingControl = true;
-
-            //if (validator.Validate(pCalculate))
-            //{
-            //    pCalculate.calculateSellingPrice();
-
-            //    lblSellingPriceAmount.Text = pCalculate.calculateSellingPrice().ToString() + " TL";
-            //    lblTrenyolComissionAmount.Text = pCalculate.calculateTrendyolComisssionExpenseAmount().ToString() + " TL";
-            //    lblKDVAmount.Text = pCalculate.calculateKDVExpenseAmount().ToString() + " TL";
-            //    lblProfitAmount.Text = pCalculate.calculateprofitAmount().ToString() + " TL";
-            //    lblCargoExpenseAmount.Text = pCalculate.cargoExpense.ToString() + " TL";
-            //    showSellingAndgPrice_Labels();
-            //}
+     
         }
       
         void showSellingAndgPrice_Labels()

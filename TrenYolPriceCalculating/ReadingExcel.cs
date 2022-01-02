@@ -43,7 +43,7 @@ namespace TrenYolPriceCalculating
         {
             string conn = string.Empty;
             DataTable dtexcel = new DataTable();
-            if (fileExt.CompareTo(".xls") == 0)//compare the extension of the file
+            if (fileExt.CompareTo(".xlsx") == 0)//compare the extension of the file
                 conn = @"provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fileName + ";Extended Properties='Excel 8.0;HRD=Yes;IMEX=1';";//for below excel 2007
             else
                 conn = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileName + ";Extended Properties='Excel 12.0;HDR=Yes;IMEX=1';";//for above excel 2007

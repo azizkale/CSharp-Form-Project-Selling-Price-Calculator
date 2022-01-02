@@ -2,9 +2,10 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
-
+using Excel = Microsoft.Office.Interop.Excel;
 
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace TrenYolPriceCalculating
 {
@@ -51,7 +52,7 @@ namespace TrenYolPriceCalculating
                 sql = "Select * from [Sayfa1$] where Urun_Adi like '%" + txtSearch.Text + "%' OR Urun_Adi = 'Ürün Adı'";
 
                 DataTable dtexcel = new DataTable();
-                OleDbDataAdapter oleAdpt = new OleDbDataAdapter(sql,MyConnection);
+                OleDbDataAdapter oleAdpt = new OleDbDataAdapter(sql, MyConnection);
                 oleAdpt.Fill(dtexcel);//fill excel data into dataTable
                 dataGridView1.DataSource = dtexcel;
 
@@ -69,8 +70,8 @@ namespace TrenYolPriceCalculating
         private void btnClearSearchTextBox_Click(object sender, EventArgs e)
         {
             txtSearch.Text = "";
-        }       
-        
+        }
+
 
 
         private void güncelleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -99,9 +100,73 @@ namespace TrenYolPriceCalculating
 
         private void silToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Ürünler.xls";
+
+
+
+            Excel.Application xlexcel;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            Excel.Range xlRange;
+            //Excel.Range xlFilteredRange;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Excel.Application();
+
+            xlexcel.Visible = true;
+
+            //~~>  Open a File
+            xlWorkBook = xlexcel.Workbooks.Open(DocumentsAndSettingsPath, 0, false, 5, "", "", true,
+            Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+
+            //~~> Work with Sheet1
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+
+            xlRange = (Excel.Range)xlWorkSheet.Cells[4, 1];
+
+           
+
+            //~~> Remove any filters if there are
+            xlWorkSheet.AutoFilterMode = false;
+
+
+            //~~> Delete the range in one go
+            xlRange.EntireRow.Delete(Excel.XlDirection.xlToRight);
+
+            //~~> Remove filters
+            xlWorkSheet.AutoFilterMode = false;
+
+            //~~> Close and cleanup
+            xlWorkBook.Close(true, misValue, misValue);
+            xlexcel.Quit();
+
+            releaseObject(xlRange);
+            //releaseObject(xlFilteredRange);
+            releaseObject(xlWorkSheet);
+            releaseObject(xlWorkBook);
+            releaseObject(xlexcel);
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Unable to release the Object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+
+
 
         }
     }
-
     
 }
