@@ -175,6 +175,7 @@
             // 
             // numSupplyingPrice
             // 
+            this.numSupplyingPrice.DecimalPlaces = 2;
             this.numSupplyingPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numSupplyingPrice.Location = new System.Drawing.Point(406, 141);
             this.numSupplyingPrice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -190,6 +191,7 @@
             // 
             // numCargoExpense
             // 
+            this.numCargoExpense.DecimalPlaces = 2;
             this.numCargoExpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numCargoExpense.Location = new System.Drawing.Point(406, 258);
             this.numCargoExpense.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -205,6 +207,7 @@
             // 
             // numKDV
             // 
+            this.numKDV.DecimalPlaces = 2;
             this.numKDV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numKDV.Location = new System.Drawing.Point(406, 319);
             this.numKDV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -220,6 +223,7 @@
             // 
             // numProfitRate
             // 
+            this.numProfitRate.DecimalPlaces = 2;
             this.numProfitRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numProfitRate.Location = new System.Drawing.Point(406, 378);
             this.numProfitRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -235,6 +239,7 @@
             // 
             // numTrenyolComission
             // 
+            this.numTrenyolComission.DecimalPlaces = 2;
             this.numTrenyolComission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numTrenyolComission.Location = new System.Drawing.Point(406, 198);
             this.numTrenyolComission.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -358,14 +363,14 @@
             // ürünEkleToolStripMenuItem
             // 
             this.ürünEkleToolStripMenuItem.Name = "ürünEkleToolStripMenuItem";
-            this.ürünEkleToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.ürünEkleToolStripMenuItem.Size = new System.Drawing.Size(170, 30);
             this.ürünEkleToolStripMenuItem.Text = "Ürün Ekle";
             this.ürünEkleToolStripMenuItem.Click += new System.EventHandler(this.ürünEkleToolStripMenuItem_Click_1);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(249, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(167, 6);
             // 
             // formİşlemleriToolStripMenuItem
             // 
@@ -379,12 +384,12 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(249, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(150, 6);
             // 
             // temizleToolStripMenuItem
             // 
             this.temizleToolStripMenuItem.Name = "temizleToolStripMenuItem";
-            this.temizleToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.temizleToolStripMenuItem.Size = new System.Drawing.Size(153, 30);
             this.temizleToolStripMenuItem.Text = "Temizle";
             this.temizleToolStripMenuItem.Click += new System.EventHandler(this.temizleToolStripMenuItem_Click);
             // 

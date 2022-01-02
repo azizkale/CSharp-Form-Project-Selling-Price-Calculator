@@ -161,7 +161,7 @@ namespace TrenYolPriceCalculating
 
         private void numSupplyingPrice_Enter(object sender, EventArgs e)
         {
-            numSupplyingPrice.Select(0, numSupplyingPrice.Text.Length);
+            numSupplyingPrice.Select(0, numSupplyingPrice.Text.Length);           
         }
 
         private void numTrenyolComission_Enter(object sender, EventArgs e)
