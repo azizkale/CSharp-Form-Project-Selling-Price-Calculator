@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Data;
 using System;
+using TrenYolPriceCalculating.Classes_CommonValues;
 
 namespace TrenYolPriceCalculating
 {
@@ -23,7 +24,7 @@ namespace TrenYolPriceCalculating
             Excel.Workbook xlWorkBook;
             Excel.Worksheet xlWorkSheet;
             object misValue = System.Reflection.Missing.Value;
-            string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);          
+            string DocumentsAndSettingsPath = PCDocumentAndSettingsPath.DocumentsAndSettingsPath;
 
             xlWorkBook = xlApp.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);

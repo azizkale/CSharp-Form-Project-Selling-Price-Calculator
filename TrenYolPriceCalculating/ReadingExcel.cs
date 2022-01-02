@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Data.OleDb;
-using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using TrenYolPriceCalculating.Classes_CommonValues;
 
 namespace TrenYolPriceCalculating
 {
@@ -14,8 +14,8 @@ namespace TrenYolPriceCalculating
 
         public void LoadExcelFromPC(DataGridView dataGridView1)
         {
-            string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filePath = DocumentsAndSettingsPath+ "\\Ürünler.xls";
+            string DocumentsAndSettingsPath = PCDocumentAndSettingsPath.DocumentsAndSettingsPath;
+            string filePath = PCDocumentAndSettingsPath.filePath;
             string fileExt = string.Empty;
 
             fileExt = Path.GetExtension(filePath); //get the file extension  

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using TrenYolPriceCalculating.Classes_CommonValues;
 
 namespace TrenYolPriceCalculating
 {
@@ -17,14 +18,21 @@ namespace TrenYolPriceCalculating
         public yenimar(Product pFromCurrentExcelFile)
         {
             InitializeComponent();
+            
             //
             lblSatisFiyatiLabel.Visible = false;
             lblSellingPriceAmount.Visible = false;
             btnProductUpdate.Visible = false;
 
+            //if user doesn't update sth, he/she can see menuStrip1
+            menuStrip1.Visible = true;
+
             // to update product
             if(pFromCurrentExcelFile.ID != null)
             {
+                //if user opens the yenimar Form to update sth, he/she can't see menuStrip1
+                menuStrip1.Visible = false;
+
                 this.pUpdate = pFromCurrentExcelFile;
 
                 txtProductName.Text = pFromCurrentExcelFile.pName;
@@ -99,6 +107,11 @@ namespace TrenYolPriceCalculating
 
         private void temizleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            cleanTheForm();
+        }
+
+        void cleanTheForm()
+        {
             txtProductName.Text = "";
 
             numCargoExpense.Value = 0;
@@ -127,9 +140,13 @@ namespace TrenYolPriceCalculating
                 if (calculatingControl)
                 {
                     ins.insertNewRow(pCalculate);
+                    cleanTheForm();
                 }
                 else
+                {
                     MessageBox.Show("Lütfen ilk önce ürünün fiyat hesaplamasını yapınız.");
+
+                }
             }
             catch (Exception exp)
             {
@@ -168,8 +185,8 @@ namespace TrenYolPriceCalculating
         {            
             calculateProductsValues(this.pUpdate);
 
-            string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filePath = DocumentsAndSettingsPath + "\\Ürünler.xls";
+            string DocumentsAndSettingsPath = PCDocumentAndSettingsPath.DocumentsAndSettingsPath;
+            string filePath = PCDocumentAndSettingsPath.filePath;
             string fileExt = string.Empty;
            
             try{
@@ -202,6 +219,7 @@ namespace TrenYolPriceCalculating
 
                 CurrentExcelFile cef = new CurrentExcelFile();
                 cef.ShowDialog();
+                cleanTheForm();
                 this.Close();
             }
             catch (Exception ex)

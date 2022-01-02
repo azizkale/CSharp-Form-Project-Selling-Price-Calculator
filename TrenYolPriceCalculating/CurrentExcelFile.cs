@@ -6,6 +6,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using TrenYolPriceCalculating.Classes_CommonValues;
 
 namespace TrenYolPriceCalculating
 {
@@ -37,8 +38,8 @@ namespace TrenYolPriceCalculating
 
         private void txtSearch_TextChanged(object sender, System.EventArgs e)
         {
-            string DocumentsAndSettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filePath = DocumentsAndSettingsPath + "\\Ürünler.xls";
+            string DocumentsAndSettingsPath = PCDocumentAndSettingsPath.DocumentsAndSettingsPath;
+            string filePath = PCDocumentAndSettingsPath.filePath;
 
             try
             {
