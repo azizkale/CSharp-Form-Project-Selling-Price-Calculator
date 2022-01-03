@@ -102,10 +102,10 @@ namespace TrenYolPriceCalculating
                 productForUpdate.profitRate = Decimal.Parse(dataGridView1.SelectedRows[0].Cells["Kar_Orani"].Value.ToString());
                 productForUpdate.ID = dataGridView1.SelectedRows[0].Cells["ID"].Value.ToString();
 
-              
+
                 yenimar ye = new yenimar(productForUpdate);
                 ye.ShowDialog();
-                this.Close(); // closes the product list window
+               
             }
             catch (Exception)
             {

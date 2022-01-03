@@ -46,6 +46,7 @@ namespace TrenYolPriceCalculating
 
                 btnProductUpdate.Visible = true;
                 this.AcceptButton = btnProductUpdate;
+                this.Text = "YENİMAR - ÜRÜN GEÜLLEME";
             }
         }       
 
@@ -224,9 +225,12 @@ namespace TrenYolPriceCalculating
                 oleAdpt.UpdateCommand.ExecuteNonQuery();
                 MyConnection.Close();
 
-                CurrentExcelFile cef = new CurrentExcelFile();
-                cef.ShowDialog();
-                cleanTheForm();
+
+                // reloads datagridview to refresh the table on datagridview
+                FormCollection forms = Application.OpenForms;
+                DataGridView dgv = (DataGridView)forms["CurrentExcelFile"].Controls["dataGridView1"];
+                readExcel.LoadExcelFromPC(dgv);                    
+                    
                 this.Close();
             }
             catch (Exception ex)
