@@ -167,8 +167,7 @@ namespace TrenYolPriceCalculating
                 expage.LoadExcelFromPC(dataGridView1);
             }
            
-        }        
-        
+        }
     }
     
 }
