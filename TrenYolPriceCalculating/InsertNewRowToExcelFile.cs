@@ -3,7 +3,6 @@ using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
 using TrenYolPriceCalculating.Classes_CommonValues;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace TrenYolPriceCalculating
 {
@@ -29,7 +28,8 @@ namespace TrenYolPriceCalculating
                     MyConnection.Open();
 
                     myCommand.Connection = MyConnection;
-                    sql = "Insert into [Sayfa1$] (ID," +
+                    sql = "Insert into [Sayfa1$] (" +
+                        "ID," +
                         "Urun_Adi," +
                         "Alis_Fiyati," +
                         "Trendyol_Komisyon_Orani," +
@@ -42,7 +42,7 @@ namespace TrenYolPriceCalculating
                         "Toplam_Gider," +
                         "SATIS_FIYATI) " +
                         "values(" +
-                        "'" + generateID() + "'," +
+                        "'" + generateID() + "'," + 
                         "'" + p.pName + "'," +
                         "'" + p.supplyingPrice + "'," +
                         "'" + p.trendyolComissionRate + "'," +
@@ -61,7 +61,7 @@ namespace TrenYolPriceCalculating
 
                     MessageBox.Show(p.pName + " adlı ürün başarı ile kaydedilmiştir.");
                 }
-                catch (Exception ex)
+            catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }

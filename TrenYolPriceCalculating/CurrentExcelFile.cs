@@ -168,6 +168,22 @@ namespace TrenYolPriceCalculating
             }
            
         }
+
+
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            // gives the rows number
+            try
+            {
+                dataGridView1.Rows[e.RowIndex+1].Cells[1].Value = (e.RowIndex + 1).ToString();
+            }
+            catch (Exception)
+            {
+            }
+
+            //meakes the lastrow empty
+            dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[1].Value = "";
+        }
     }
     
 }
