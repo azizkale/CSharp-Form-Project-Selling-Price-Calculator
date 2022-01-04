@@ -27,6 +27,7 @@ namespace TrenYolPriceCalculating
 
         public void giveTurkishNamesToColumnsHeaderTexts(DataGridView dgv)
         {
+           dgv.Columns[0].HeaderText = "ID";
            dgv.Columns[1].HeaderText = "Ürün Adı";
            dgv.Columns[2].HeaderText = "Alış Fiyatı" + "\n" + "(TL)";
            dgv.Columns[3].HeaderText = "Trendyol Komisyon Oranı" + "\n" + "(%)";

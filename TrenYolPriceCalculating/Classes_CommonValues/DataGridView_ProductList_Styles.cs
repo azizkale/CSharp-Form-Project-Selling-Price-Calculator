@@ -9,12 +9,13 @@ namespace YENİMAR.Classes_CommonValues
         public void giveStyleToDatagridView1(DataGridView dgv)
         {
             ExcelFileColumns exfileCol = new ExcelFileColumns();
-
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;//auto cell heights
-
-            dgv.Rows[0].DefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
-            dgv.Columns[0].Visible = false; // hides the ID column
+            if(dgv.Rows.Count > 0)
+            {
+                dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;//auto cell heights     
+                dgv.Rows[0].DefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
+                dgv.Columns[0].Visible = false; // hides the ID column              
+            }
             dgv.RowTemplate.Height = 30;
             dgv.ColumnHeadersVisible = true;
             dgv.Font = new Font("Tahoma", 12);
