@@ -51,6 +51,13 @@ namespace TrenYolPriceCalculating
 
             //gives names with charachters taht are unknown according to sql
             exfileCol.giveTurkishNamesToColumnsHeaderTexts(dataGridView1);
+
+            //centers the text of columns' headers
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                col.HeaderCell.Style.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Pixel);
+            }
         }
 
         private void txtSearch_TextChanged(object sender, System.EventArgs e)
