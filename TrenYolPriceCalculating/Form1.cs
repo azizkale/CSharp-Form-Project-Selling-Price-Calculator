@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.OleDb;
+using System.Drawing;
 using System.Windows.Forms;
 using TrenYolPriceCalculating.Classes_CommonValues;
 
@@ -18,6 +19,7 @@ namespace TrenYolPriceCalculating
         public yenimar(Product pFromCurrentExcelFile)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
 
             //
             this.AcceptButton = btnCalculate;
