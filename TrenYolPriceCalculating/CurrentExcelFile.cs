@@ -12,6 +12,7 @@ namespace TrenYolPriceCalculating
     public partial class CurrentExcelFile : Form
     {
         ReadingExcel expage = new ReadingExcel();
+        ExcelFileColumns exfileCol = new ExcelFileColumns();
         Product productForUpdate;
 
         public CurrentExcelFile()
@@ -28,7 +29,7 @@ namespace TrenYolPriceCalculating
             dataGridView1.Rows[0].DefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
             dataGridView1.Columns[0].Visible = false; // hides the ID column
             dataGridView1.RowTemplate.Height = 30;
-            dataGridView1.ColumnHeadersVisible = false;
+            dataGridView1.ColumnHeadersVisible = true;
             dataGridView1.Font = new Font("Tahoma", 12);
 
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;//wrapping text into cells 
@@ -46,7 +47,10 @@ namespace TrenYolPriceCalculating
             dataGridView1.Columns[dataGridView1.Columns.Count - 1].DefaultCellStyle.BackColor = Color.Turquoise;
 
             //define the color of the selectedRow
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.MediumAquamarine;          
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.MediumAquamarine;
+
+            //gives names with charachters taht are unknown according to sql
+            exfileCol.giveTurkishNamesToColumnsHeaderTexts(dataGridView1);
         }
 
         private void txtSearch_TextChanged(object sender, System.EventArgs e)
