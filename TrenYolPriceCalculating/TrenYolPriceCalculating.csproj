@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes_CommonValues\CommonFunctions.cs" />
+    <Compile Include="Classes_CommonValues\DataGridView_ProductList_Styles.cs" />
     <Compile Include="Classes_CommonValues\PCDocumentAndSettingsPath.cs" />
     <Compile Include="CreatingExcel.cs" />
     <Compile Include="CurrentExcelFile.cs">

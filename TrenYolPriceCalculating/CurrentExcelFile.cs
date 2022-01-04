@@ -6,14 +6,15 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using TrenYolPriceCalculating.Classes_CommonValues;
+using YENİMAR.Classes_CommonValues;
 
 namespace TrenYolPriceCalculating
 {
     public partial class CurrentExcelFile : Form
     {
         ReadingExcel expage = new ReadingExcel();
-        ExcelFileColumns exfileCol = new ExcelFileColumns();
         Product productForUpdate;
+        DataGridView_ProductList_Styles dgvStyle = new DataGridView_ProductList_Styles();
 
         public CurrentExcelFile()
         {
@@ -23,41 +24,7 @@ namespace TrenYolPriceCalculating
 
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;//auto cell heights
-
-            dataGridView1.Rows[0].DefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
-            dataGridView1.Columns[0].Visible = false; // hides the ID column
-            dataGridView1.RowTemplate.Height = 30;
-            dataGridView1.ColumnHeadersVisible = true;
-            dataGridView1.Font = new Font("Tahoma", 12);
-
-            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;//wrapping text into cells 
-
-            // to color the columns
-            for (int i = 0; i < dataGridView1.Columns.Count; i++)
-            {
-                if (i % 2 == 0)
-                    dataGridView1.Columns[i].DefaultCellStyle.BackColor = Color.Beige;
-                else
-                    dataGridView1.Columns[i].DefaultCellStyle.BackColor = Color.Bisque;
-            }
-
-            // colorss the last colum with different color
-            dataGridView1.Columns[dataGridView1.Columns.Count - 1].DefaultCellStyle.BackColor = Color.Turquoise;
-
-            //define the color of the selectedRow
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.MediumAquamarine;
-
-            //gives names with charachters taht are unknown according to sql
-            exfileCol.giveTurkishNamesToColumnsHeaderTexts(dataGridView1);
-
-            //centers the text of columns' headers
-            foreach (DataGridViewColumn col in dataGridView1.Columns)
-            {
-                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                col.HeaderCell.Style.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Pixel);
-            }
+            dgvStyle.giveStyleToDatagridView1(dataGridView1);           
         }
 
         private void txtSearch_TextChanged(object sender, System.EventArgs e)

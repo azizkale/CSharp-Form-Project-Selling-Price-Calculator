@@ -20,7 +20,7 @@ namespace TrenYolPriceCalculating
             InitializeComponent();
 
             //
-            this.AcceptButton = bynCalculate;
+            this.AcceptButton = btnCalculate;
             //
             lblSatisFiyatiLabel.Visible = false;
             lblSellingPriceAmount.Visible = false;
@@ -48,14 +48,14 @@ namespace TrenYolPriceCalculating
                 this.AcceptButton = btnProductUpdate;
                 this.Text = "YENİMAR - ÜRÜN GEÜLLEME";
             }
-        }       
+        }
 
-        private void bynCalculate_Click(object sender, EventArgs e)
+        private void btnCalculate_Click_1(object sender, EventArgs e)
         {
             calculateProductsValues(pCalculate);
-     
+
         }
-      
+
         void showSellingAndgPrice_Labels()
         {
             lblSatisFiyatiLabel.Visible = true;
@@ -278,5 +278,8 @@ namespace TrenYolPriceCalculating
             }
         }
 
+        
+
+      
     }
 }  

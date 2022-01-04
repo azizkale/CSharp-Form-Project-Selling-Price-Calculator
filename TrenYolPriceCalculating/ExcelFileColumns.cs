@@ -21,21 +21,7 @@ namespace TrenYolPriceCalculating
             worksheet.Cells[1, 9] = "Kar_Orani";
             worksheet.Cells[1, 10] = "Kar_Tutari";
             worksheet.Cells[1, 11] = "Toplam_Gider";
-            worksheet.Cells[1, 12] = "SATIS_FIYATI";
-            //these are turkish column names
-            //worksheet.Cells[rowNumber, 1] = "ID";
-            //worksheet.Cells[rowNumber, 2] = "No.";
-            //worksheet.Cells[rowNumber, 3] = "Ürün Adı";
-            //worksheet.Cells[rowNumber, 4] = "Alış Fiyatı" + "\n" +"(TL)";
-            //worksheet.Cells[rowNumber, 5] = "Trendyol Komisyon Oranı" + "\n" + "(%)";
-            //worksheet.Cells[rowNumber, 6] = "Trendyol Komisyon Tutarı" + "\n" + "(TL)";
-            //worksheet.Cells[rowNumber, 7] = "KDV Oranı" + "\n" + "(%)";
-            //worksheet.Cells[rowNumber, 8] = "KDV Tutarı" + "\n" + "(TL)";
-            //worksheet.Cells[rowNumber, 9] = "Kargo Gideri" + "\n" + "(TL)";
-            //worksheet.Cells[rowNumber, 10] ="Kar Oranı" + "\n" + "(%)";
-            //worksheet.Cells[rowNumber, 11] = "Kar Tutarı" + "\n" + "(TL)";
-            //worksheet.Cells[rowNumber, 12] = "Toplam Gider" + "\n" + "(TL)";
-            //worksheet.Cells[rowNumber, 13] = "SATIŞ FİYATI" + "\n" + "(TL)";            
+            worksheet.Cells[1, 12] = "SATIS_FIYATI";                 
             return worksheet;
         }
 
