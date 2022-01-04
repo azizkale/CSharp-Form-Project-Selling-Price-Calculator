@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using TrenYolPriceCalculating;
 
@@ -9,13 +10,10 @@ namespace YENİMAR.Classes_CommonValues
         public void giveStyleToDatagridView1(DataGridView dgv)
         {
             ExcelFileColumns exfileCol = new ExcelFileColumns();
-            if(dgv.Rows.Count > 0)
-            {
-                dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;//auto cell heights     
-                dgv.Rows[0].DefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
-                dgv.Columns[0].Visible = false; // hides the ID column              
-            }
+           
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;//auto cell heights     
+            dgv.Columns[0].Visible = false;   
             dgv.RowTemplate.Height = 30;
             dgv.ColumnHeadersVisible = true;
             dgv.Font = new Font("Tahoma", 12);
@@ -26,9 +24,15 @@ namespace YENİMAR.Classes_CommonValues
             for (int i = 0; i < dgv.Columns.Count; i++)
             {
                 if (i % 2 == 0)
+                {
                     dgv.Columns[i].DefaultCellStyle.BackColor = Color.Beige;
+                }
+
                 else
+                {
                     dgv.Columns[i].DefaultCellStyle.BackColor = Color.Bisque;
+                }
+                dgv.Columns[i].DefaultCellStyle.Format = "0.00#";
             }
 
             // colorss the last colum with different color

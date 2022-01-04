@@ -76,11 +76,11 @@ namespace TrenYolPriceCalculating
             {
                 product.calculateSellingPrice();
 
-                lblSellingPriceAmount.Text = product.calculateSellingPrice().ToString() + " TL";
-                lblTrenyolComissionAmount.Text = product.calculateTrendyolComisssionExpenseAmount().ToString() + " TL";
-                lblKDVAmount.Text = product.calculateKDVExpenseAmount().ToString() + " TL";
-                lblProfitAmount.Text = product.calculateprofitAmount().ToString() + " TL";
-                lblCargoExpenseAmount.Text = product.cargoExpense.ToString() + " TL";
+                lblSellingPriceAmount.Text = product.calculateSellingPrice().ToString("C2");
+                lblTrenyolComissionAmount.Text = product.calculateTrendyolComisssionExpenseAmount().ToString("C2");
+                lblKDVAmount.Text = product.calculateKDVExpenseAmount().ToString("C2");
+                lblProfitAmount.Text = product.calculateprofitAmount().ToString("C2");
+                lblCargoExpenseAmount.Text = product.cargoExpense.ToString("C2");
                 showSellingAndgPrice_Labels();
             }
         }       

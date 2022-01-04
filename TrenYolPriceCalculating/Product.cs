@@ -54,8 +54,8 @@ namespace TrenYolPriceCalculating
         {
             this.profitAmount =  this.totalExpenseAmount * this.profitRate/100;
             return this.profitAmount;
-        }      
-    }    
+        }
+    }
 }
 
 interface IValidator<T>

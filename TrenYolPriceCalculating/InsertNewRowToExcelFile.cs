@@ -44,16 +44,16 @@ namespace TrenYolPriceCalculating
                         "values(" +
                         "'" + generateID() + "'," + 
                         "'" + p.pName + "'," +
-                        "'" + p.supplyingPrice + "'," +
-                        "'" + p.trendyolComissionRate + "'," +
-                        "'" + p.trendyolComissionExpenseAmount + "'," +
-                        "'" + p.KDV + "'," +
-                        "'" + p.kdvExpenseAmount + "'," +
-                        "'" + p.cargoExpense + "'," +
-                        "'" + p.profitRate + "'," +
-                        "'" + p.profitAmount + "'," +
-                        "'" + p.totalExpenseAmount + "'," +
-                        "'" + p.sellingingPrice + "')";
+                        "'" + p.supplyingPrice.ToString("C2") + "'," +
+                        "'" + p.trendyolComissionRate.ToString("F2") + "'," +
+                        "'" + p.trendyolComissionExpenseAmount.ToString("C2") + "'," +
+                        "'" + p.KDV.ToString("F2") + "'," +
+                        "'" + p.kdvExpenseAmount.ToString("C2") + "'," +
+                        "'" + p.cargoExpense.ToString("C2") + "'," +
+                        "'" + p.profitRate.ToString("F2") + "'," +
+                        "'" + p.profitAmount.ToString("C2") + "'," +
+                        "'" + p.totalExpenseAmount.ToString("C2") + "'," +
+                        "'" + p.sellingingPrice.ToString("C2") + "')";
 
                     myCommand.CommandText = sql;
                     myCommand.ExecuteNonQuery();
