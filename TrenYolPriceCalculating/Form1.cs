@@ -19,8 +19,8 @@ namespace TrenYolPriceCalculating
         public yenimar(Product pFromCurrentExcelFile)
         {
             InitializeComponent();
+            //
             this.StartPosition = FormStartPosition.CenterScreen;
-
             //
             this.AcceptButton = btnCalculate;
             //
@@ -55,7 +55,7 @@ namespace TrenYolPriceCalculating
         private void btnCalculate_Click_1(object sender, EventArgs e)
         {
             calculateProductsValues(pCalculate);
-
+            pictureBox1.Visible = true;
         }
 
         void showSellingAndgPrice_Labels()
