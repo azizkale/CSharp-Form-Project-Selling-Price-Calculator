@@ -427,10 +427,10 @@
             // btnProductUpdate
             // 
             this.btnProductUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProductUpdate.Location = new System.Drawing.Point(679, 547);
+            this.btnProductUpdate.Location = new System.Drawing.Point(645, 547);
             this.btnProductUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnProductUpdate.Name = "btnProductUpdate";
-            this.btnProductUpdate.Size = new System.Drawing.Size(127, 55);
+            this.btnProductUpdate.Size = new System.Drawing.Size(161, 55);
             this.btnProductUpdate.TabIndex = 12;
             this.btnProductUpdate.Text = "Kaydet";
             this.btnProductUpdate.UseVisualStyleBackColor = true;
