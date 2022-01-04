@@ -74,7 +74,7 @@ namespace TrenYolPriceCalculating
                 MyConnection.Open();
 
                 myCommand.Connection = MyConnection;
-                sql = "Select * from [Sayfa1$] where Urun_Adi like '%" + txtSearch.Text + "%' OR Urun_Adi = 'Ürün Adı'";
+                sql = "Select * from [Sayfa1$] where Urun_Adi like '%" + txtSearch.Text + "%'";
 
                 DataTable dtexcel = new DataTable();
                 OleDbDataAdapter oleAdpt = new OleDbDataAdapter(sql, MyConnection);
