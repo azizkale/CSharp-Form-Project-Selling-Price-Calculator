@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using TrenYolPriceCalculating;
 
 namespace TrenYolPriceCalculating
@@ -35,25 +36,27 @@ namespace TrenYolPriceCalculating
 
             this.sellingingPrice = this.profitAmount + this.totalExpenseAmount;
 
-            return this.sellingingPrice;
+            //makes it with 2 digit after komma
+            return Decimal.Parse(String.Format("{0:0.##}", this.sellingingPrice));
         }
 
         public decimal calculateTrendyolComisssionExpenseAmount()
         {
             this.trendyolComissionExpenseAmount = this.supplyingPrice * this.trendyolComissionRate / 100;
-            return trendyolComissionExpenseAmount;
+            return Decimal.Parse(String.Format("{0:0.##}", this.trendyolComissionExpenseAmount));
+
         }
 
         public decimal calculateKDVExpenseAmount()
         {
             this.kdvExpenseAmount = this.supplyingPrice * this.KDV/100;
-            return this.kdvExpenseAmount;
+            return Decimal.Parse(String.Format("{0:0.##}", this.kdvExpenseAmount));
         }
 
         public decimal calculateprofitAmount()
         {
             this.profitAmount =  this.totalExpenseAmount * this.profitRate/100;
-            return this.profitAmount;
+            return Decimal.Parse(String.Format("{0:0.##}", this.profitAmount));
         }
     }
 }

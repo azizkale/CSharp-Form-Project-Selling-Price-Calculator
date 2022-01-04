@@ -44,16 +44,16 @@ namespace TrenYolPriceCalculating
                         "values(" +
                         "'" + generateID() + "'," + 
                         "'" + p.pName + "'," +
-                        "'" + p.supplyingPrice.ToString("C2") + "'," +
-                        "'" + p.trendyolComissionRate.ToString("F2") + "'," +
-                        "'" + p.trendyolComissionExpenseAmount.ToString("C2") + "'," +
-                        "'" + p.KDV.ToString("F2") + "'," +
-                        "'" + p.kdvExpenseAmount.ToString("C2") + "'," +
-                        "'" + p.cargoExpense.ToString("C2") + "'," +
-                        "'" + p.profitRate.ToString("F2") + "'," +
-                        "'" + p.profitAmount.ToString("C2") + "'," +
-                        "'" + p.totalExpenseAmount.ToString("C2") + "'," +
-                        "'" + p.sellingingPrice.ToString("C2") + "')";
+                        "'" + p.supplyingPrice.ToString("N2") + "'," +
+                        "'" + p.trendyolComissionRate.ToString("N2") + "'," +
+                        "'" + p.trendyolComissionExpenseAmount.ToString("N2") + "'," +
+                        "'" + p.KDV.ToString("N2") + "'," +
+                        "'" + p.kdvExpenseAmount.ToString("N2") + "'," +
+                        "'" + p.cargoExpense.ToString("N2") + "'," +
+                        "'" + p.profitRate.ToString("N2") + "'," +
+                        "'" + p.profitAmount.ToString("N2") + "'," +
+                        "'" + p.totalExpenseAmount.ToString("N2") + "'," +
+                        "'" + p.sellingingPrice.ToString("N2") + "')";
 
                     myCommand.CommandText = sql;
                     myCommand.ExecuteNonQuery();

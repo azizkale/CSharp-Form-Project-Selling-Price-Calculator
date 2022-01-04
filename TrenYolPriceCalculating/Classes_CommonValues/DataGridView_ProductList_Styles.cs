@@ -10,7 +10,7 @@ namespace YENİMAR.Classes_CommonValues
         public void giveStyleToDatagridView1(DataGridView dgv)
         {
             ExcelFileColumns exfileCol = new ExcelFileColumns();
-           
+
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;//auto cell heights     
             dgv.Columns[0].Visible = false;   
@@ -32,7 +32,7 @@ namespace YENİMAR.Classes_CommonValues
                 {
                     dgv.Columns[i].DefaultCellStyle.BackColor = Color.Bisque;
                 }
-                dgv.Columns[i].DefaultCellStyle.Format = "0.00#";
+
             }
 
             // colorss the last colum with different color

@@ -202,7 +202,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::YENİMAR.Properties.Resources.WhatsApp_Image_2022_01_03_at_16_02_04;
             this.ClientSize = new System.Drawing.Size(1329, 656);
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.dataGridView1);
