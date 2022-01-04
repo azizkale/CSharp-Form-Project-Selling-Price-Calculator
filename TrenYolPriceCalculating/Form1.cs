@@ -162,10 +162,17 @@ namespace TrenYolPriceCalculating
             }
         }
 
-
         private void numSupplyingPrice_Enter(object sender, EventArgs e)
         {
-            numSupplyingPrice.Select(0, numSupplyingPrice.Text.Length);           
+            numSupplyingPrice.Select(0, numSupplyingPrice.Text.Length);          
+        }
+
+        private void numSupplyingPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('.') || e.KeyChar.Equals(','))
+            {
+                e.KeyChar = ((System.Globalization.CultureInfo)System.Globalization.CultureInfo.CurrentCulture).NumberFormat.NumberDecimalSeparator.ToCharArray()[0];
+            }
         }
 
         private void numTrenyolComission_Enter(object sender, EventArgs e)
@@ -173,9 +180,25 @@ namespace TrenYolPriceCalculating
             numTrenyolComission.Select(0, numTrenyolComission.Text.Length);
         }
 
+        private void numTrenyolComission_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('.') || e.KeyChar.Equals(','))
+            {
+                e.KeyChar = ((System.Globalization.CultureInfo)System.Globalization.CultureInfo.CurrentCulture).NumberFormat.NumberDecimalSeparator.ToCharArray()[0];
+            }
+        }
+
         private void numCargoExpense_Enter(object sender, EventArgs e)
         {
             numCargoExpense.Select(0, numCargoExpense.Text.Length);
+        }
+
+        private void numCargoExpense_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('.') || e.KeyChar.Equals(','))
+            {
+                e.KeyChar = ((System.Globalization.CultureInfo)System.Globalization.CultureInfo.CurrentCulture).NumberFormat.NumberDecimalSeparator.ToCharArray()[0];
+            }
         }
 
         private void numKDV_Enter(object sender, EventArgs e)
@@ -184,9 +207,25 @@ namespace TrenYolPriceCalculating
 
         }
 
+        private void numKDV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('.') || e.KeyChar.Equals(','))
+            {
+                e.KeyChar = ((System.Globalization.CultureInfo)System.Globalization.CultureInfo.CurrentCulture).NumberFormat.NumberDecimalSeparator.ToCharArray()[0];
+            }
+        }
+
         private void numProfitRate_Enter(object sender, EventArgs e)
         {
             numProfitRate.Select(0, numProfitRate.Text.Length);
+        }
+
+        private void numProfitRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('.') || e.KeyChar.Equals(','))
+            {
+                e.KeyChar = ((System.Globalization.CultureInfo)System.Globalization.CultureInfo.CurrentCulture).NumberFormat.NumberDecimalSeparator.ToCharArray()[0];
+            }
         }
 
         private void btnProductUpdate_Click(object sender, EventArgs e)
@@ -238,5 +277,6 @@ namespace TrenYolPriceCalculating
                 MessageBox.Show(ex.ToString());
             }
         }
+
     }
 }  

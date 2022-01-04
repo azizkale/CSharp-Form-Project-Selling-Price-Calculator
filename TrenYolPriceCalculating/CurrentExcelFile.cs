@@ -3,7 +3,6 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using Excel = Microsoft.Office.Interop.Excel;
-
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using TrenYolPriceCalculating.Classes_CommonValues;
@@ -47,7 +46,7 @@ namespace TrenYolPriceCalculating
             dataGridView1.Columns[dataGridView1.Columns.Count - 1].DefaultCellStyle.BackColor = Color.Turquoise;
 
             //define the color of the selectedRow
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.MediumAquamarine;
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.MediumAquamarine;          
         }
 
         private void txtSearch_TextChanged(object sender, System.EventArgs e)
@@ -86,8 +85,6 @@ namespace TrenYolPriceCalculating
         {
             txtSearch.Text = "";
         }
-
-
 
         private void güncelleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -169,21 +166,7 @@ namespace TrenYolPriceCalculating
            
         }
 
-
-        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            // gives the rows number
-            try
-            {
-                dataGridView1.Rows[e.RowIndex+1].Cells[1].Value = (e.RowIndex + 1).ToString();
-            }
-            catch (Exception)
-            {
-            }
-
-            //meakes the lastrow empty
-            dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[1].Value = "";
-        }
+       
     }
     
 }

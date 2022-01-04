@@ -189,6 +189,7 @@
             this.numSupplyingPrice.Size = new System.Drawing.Size(216, 35);
             this.numSupplyingPrice.TabIndex = 2;
             this.numSupplyingPrice.Enter += new System.EventHandler(this.numSupplyingPrice_Enter);
+            this.numSupplyingPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numSupplyingPrice_KeyPress);
             // 
             // numCargoExpense
             // 
@@ -205,6 +206,7 @@
             this.numCargoExpense.Size = new System.Drawing.Size(216, 35);
             this.numCargoExpense.TabIndex = 4;
             this.numCargoExpense.Enter += new System.EventHandler(this.numCargoExpense_Enter);
+            this.numCargoExpense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numCargoExpense_KeyPress);
             // 
             // numKDV
             // 
@@ -221,6 +223,7 @@
             this.numKDV.Size = new System.Drawing.Size(216, 35);
             this.numKDV.TabIndex = 5;
             this.numKDV.Enter += new System.EventHandler(this.numKDV_Enter);
+            this.numKDV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numKDV_KeyPress);
             // 
             // numProfitRate
             // 
@@ -237,6 +240,7 @@
             this.numProfitRate.Size = new System.Drawing.Size(216, 35);
             this.numProfitRate.TabIndex = 6;
             this.numProfitRate.Enter += new System.EventHandler(this.numProfitRate_Enter);
+            this.numProfitRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numProfitRate_KeyPress);
             // 
             // numTrenyolComission
             // 
@@ -253,6 +257,7 @@
             this.numTrenyolComission.Size = new System.Drawing.Size(216, 35);
             this.numTrenyolComission.TabIndex = 3;
             this.numTrenyolComission.Enter += new System.EventHandler(this.numTrenyolComission_Enter);
+            this.numTrenyolComission.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numTrenyolComission_KeyPress);
             // 
             // lblTrenyolComissionAmount
             // 
