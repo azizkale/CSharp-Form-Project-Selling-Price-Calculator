@@ -19,8 +19,8 @@ namespace TrenYolPriceCalculating
         public yenimar(Product pFromCurrentExcelFile)
         {
             InitializeComponent();
+            //
             this.StartPosition = FormStartPosition.CenterScreen;
-
             //
             this.AcceptButton = btnCalculate;
             //
@@ -50,12 +50,13 @@ namespace TrenYolPriceCalculating
                 this.AcceptButton = btnProductUpdate;
                 this.Text = "YENİMAR - ÜRÜN GEÜLLEME";
             }
+
+            pictureBox1.Visible = false;
         }
 
         private void btnCalculate_Click_1(object sender, EventArgs e)
         {
             calculateProductsValues(pCalculate);
-
         }
 
         void showSellingAndgPrice_Labels()
@@ -84,6 +85,8 @@ namespace TrenYolPriceCalculating
                 lblProfitAmount.Text = product.calculateprofitAmount().ToString("C2");
                 lblCargoExpenseAmount.Text = product.cargoExpense.ToString("C2");
                 showSellingAndgPrice_Labels();
+                pictureBox1.Visible = true;
+
             }
         }       
 
