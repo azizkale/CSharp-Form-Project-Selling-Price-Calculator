@@ -20,6 +20,8 @@ namespace TrenYolPriceCalculating
         {
             InitializeComponent();
             expage.LoadExcelFromPC(dataGridView1);//loading excel file
+            this.StartPosition = FormStartPosition.CenterScreen; // positions the window
+
         }
 
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
