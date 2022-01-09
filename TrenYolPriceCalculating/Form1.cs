@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using TrenYolPriceCalculating.Classes_CommonValues;
 using WebSocketSharp;
 
-namespace TrenYolPriceCalculating
+namespace TrenYolPriceCalculating 
 {
     public partial class yenimar : Form
     {
@@ -313,6 +313,22 @@ namespace TrenYolPriceCalculating
             }
         }
 
+        //sends the app to system tray
+        private void yenimar_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                notifyIcon1.Visible = true;
+            }
+        }
 
+        //calls the application to back from system tray
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
+        }
     }
 }  

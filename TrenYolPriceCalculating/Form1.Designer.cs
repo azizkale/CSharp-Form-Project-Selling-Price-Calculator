@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(yenimar));
             this.label1 = new System.Windows.Forms.Label();
             this.txtProductName = new System.Windows.Forms.TextBox();
@@ -66,6 +67,7 @@
             this.temizleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnProductUpdate = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numSupplyingPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCargoExpense)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKDV)).BeginInit();
@@ -331,6 +333,11 @@
             this.btnProductUpdate.UseVisualStyleBackColor = true;
             this.btnProductUpdate.Click += new System.EventHandler(this.btnProductUpdate_Click);
             // 
+            // notifyIcon1
+            // 
+            resources.ApplyResources(this.notifyIcon1, "notifyIcon1");
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // yenimar
             // 
             this.AcceptButton = this.btnCalculate;
@@ -362,6 +369,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "yenimar";
+            this.Resize += new System.EventHandler(this.yenimar_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.numSupplyingPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCargoExpense)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKDV)).EndInit();
@@ -413,6 +421,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
