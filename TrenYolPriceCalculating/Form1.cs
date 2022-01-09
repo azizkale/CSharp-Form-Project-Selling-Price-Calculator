@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Data.OleDb;
-using System.Drawing;
+using System.IO;
+using System.Text.Json;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using TrenYolPriceCalculating.Classes_CommonValues;
+using WebSocketSharp;
 
 namespace TrenYolPriceCalculating
 {
@@ -14,7 +17,7 @@ namespace TrenYolPriceCalculating
         ProductValidator validator = new ProductValidator();
         ReadingExcel readExcel = new ReadingExcel();
         bool calculatingControl = false; // controls whether at first being done calculating before adding new product
-
+        
 
         public yenimar(Product pFromCurrentExcelFile)
         {
@@ -51,7 +54,9 @@ namespace TrenYolPriceCalculating
                 this.Text = "YENİMAR - ÜRÜN GEÜLLEME";
             }
 
-            pictureBox1.Visible = false;
+            //websocket connection function
+            this.webSocketConnection();
+
         }
 
         private void btnCalculate_Click_1(object sender, EventArgs e)
@@ -85,7 +90,6 @@ namespace TrenYolPriceCalculating
                 lblProfitAmount.Text = product.calculateprofitAmount().ToString("C2");
                 lblCargoExpenseAmount.Text = product.cargoExpense.ToString("C2");
                 showSellingAndgPrice_Labels();
-                pictureBox1.Visible = true;
 
             }
         }       
@@ -283,8 +287,32 @@ namespace TrenYolPriceCalculating
             }
         }
 
-        
+        private void webSocketConnection()
+        {
+            // we use "using" scope to dispose it after using it
+            WebSocket ws = new WebSocket("ws://no100.herokuapp.com");
+            ws.OnMessage += Ws_OnMessage;
+            ws.Connect();
+        }
 
-      
+        private void Ws_OnMessage(object sender, MessageEventArgs e)
+        {
+            TextBox.CheckForIllegalCrossThreadCalls = false; // this is for "Cross-thread operation not valid" error
+            
+            // the code below deserializes the data comes from websocket server
+            Product productFromWebsocket = new JavaScriptSerializer().Deserialize<Product>(e.Data);
+            try
+            {
+                //insert new row (product) to excel file
+                InsertNewRowToExcelFile ins = new InsertNewRowToExcelFile();
+                ins.insertNewRow(productFromWebsocket);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+
     }
 }  
