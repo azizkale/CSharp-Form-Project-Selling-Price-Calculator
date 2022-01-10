@@ -20,6 +20,9 @@ namespace TrenYolPriceCalculating
         public decimal trendyolComissionExpenseAmount { get; set; }
         public decimal kdvExpenseAmount { get; set; }
 
+        //sending info
+        public string senderInfo;
+
         //Profit Amount
         public decimal profitAmount { get; set; }
 
