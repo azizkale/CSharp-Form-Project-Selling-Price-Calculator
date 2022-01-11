@@ -42,9 +42,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClearSearchTextBox = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuStrip3 = new System.Windows.Forms.MenuStrip();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtInvoiceAmount = new System.Windows.Forms.TextBox();
+            this.cmbKdv = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.panelSearch.SuspendLayout();
@@ -71,16 +71,17 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 72);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 15, 5, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1329, 584);
+            this.dataGridView1.Size = new System.Drawing.Size(1660, 574);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
+            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // contextMenuStrip1
             // 
@@ -108,7 +109,7 @@
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(410, 0);
+            this.txtSearch.Location = new System.Drawing.Point(420, 0);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(484, 69);
@@ -117,14 +118,20 @@
             // 
             // panelSearch
             // 
+            this.panelSearch.Controls.Add(this.cmbKdv);
+            this.panelSearch.Controls.Add(this.txtInvoiceAmount);
+            this.panelSearch.Controls.Add(this.label2);
             this.panelSearch.Controls.Add(this.pictureBox2);
             this.panelSearch.Controls.Add(this.label1);
             this.panelSearch.Controls.Add(this.btnClearSearchTextBox);
             this.panelSearch.Controls.Add(this.pictureBox1);
             this.panelSearch.Controls.Add(this.txtSearch);
-            this.panelSearch.Location = new System.Drawing.Point(65, 18);
+            this.panelSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSearch.Location = new System.Drawing.Point(0, 0);
+            this.panelSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 15);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(997, 72);
+            this.panelSearch.Padding = new System.Windows.Forms.Padding(5);
+            this.panelSearch.Size = new System.Drawing.Size(1660, 72);
             this.panelSearch.TabIndex = 6;
             // 
             // pictureBox2
@@ -141,7 +148,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(183, 9);
+            this.label1.Location = new System.Drawing.Point(188, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(221, 52);
             this.label1.TabIndex = 8;
@@ -170,46 +177,52 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // menuStrip2
+            // label2
             // 
-            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip2.Location = new System.Drawing.Point(0, 24);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1329, 24);
-            this.menuStrip2.TabIndex = 3;
-            this.menuStrip2.Text = "menuStrip2";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(1003, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(243, 52);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Birim Fiyat:";
             // 
-            // menuStrip1
+            // txtInvoiceAmount
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Location = new System.Drawing.Point(0, 48);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1329, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
+            this.txtInvoiceAmount.BackColor = System.Drawing.SystemColors.Control;
+            this.txtInvoiceAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtInvoiceAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInvoiceAmount.Location = new System.Drawing.Point(1251, 0);
+            this.txtInvoiceAmount.Multiline = true;
+            this.txtInvoiceAmount.Name = "txtInvoiceAmount";
+            this.txtInvoiceAmount.ReadOnly = true;
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(283, 69);
+            this.txtInvoiceAmount.TabIndex = 11;
+            this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // menuStrip3
+            // cmbKdv
             // 
-            this.menuStrip3.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip3.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip3.Name = "menuStrip3";
-            this.menuStrip3.Size = new System.Drawing.Size(1329, 24);
-            this.menuStrip3.TabIndex = 7;
-            this.menuStrip3.Text = "menuStrip3";
+            this.cmbKdv.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.cmbKdv.FormattingEnabled = true;
+            this.cmbKdv.Items.AddRange(new object[] {
+            "0",
+            "8",
+            "18"});
+            this.cmbKdv.Location = new System.Drawing.Point(1550, 12);
+            this.cmbKdv.Name = "cmbKdv";
+            this.cmbKdv.Size = new System.Drawing.Size(164, 48);
+            this.cmbKdv.TabIndex = 8;
+            this.cmbKdv.Text = "KDV";
+            this.cmbKdv.SelectedIndexChanged += new System.EventHandler(this.cmbKdv_SelectedIndexChanged);
             // 
             // CurrentExcelFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1329, 656);
-            this.Controls.Add(this.panelSearch);
+            this.ClientSize = new System.Drawing.Size(1660, 646);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.menuStrip2);
-            this.Controls.Add(this.menuStrip3);
+            this.Controls.Add(this.panelSearch);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip2;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CurrentExcelFile";
             this.Text = "YENİMAR - Ürün Listesi";
@@ -220,7 +233,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -235,9 +247,9 @@
         private System.Windows.Forms.ToolStripMenuItem güncelleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem silToolStripMenuItem;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.MenuStrip menuStrip3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox txtInvoiceAmount;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbKdv;
     }
 }

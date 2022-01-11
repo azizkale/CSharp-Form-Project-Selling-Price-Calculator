@@ -16,7 +16,7 @@ namespace TrenYolPriceCalculating
         ProductValidator validator = new ProductValidator();
         ReadingExcel readExcel = new ReadingExcel();
         bool calculatingControl = false; // controls whether at first being done calculating before adding new product
-        WebSocket ws;
+      
 
         public yenimar(Product pFromCurrentExcelFile)
         {
@@ -286,11 +286,12 @@ namespace TrenYolPriceCalculating
             }
         }
 
+        WebSocket ws;
         private void webSocketConnection()
         {
             // we use "using" scope to dispose it after using it
-            //WebSocket ws = new WebSocket("ws://no100.herokuapp.com");
-            ws = new WebSocket("ws://localhost:5000");
+            ws = new WebSocket("ws://frozen-earth-60865.herokuapp.com");
+            //ws = new WebSocket("ws://localhost:5000");
             ws.OnMessage += Ws_OnMessage;
             ws.OnOpen += Ws_OnOpen;       
             ws.Connect();
@@ -300,7 +301,8 @@ namespace TrenYolPriceCalculating
         {
             Product controlAnyProductOnServer = new Product();
             controlAnyProductOnServer.requestInfo = "connectingReq";
-            ws.Send(JsonSerializer.Serialize(controlAnyProductOnServer));
+            string json = JsonSerializer.Serialize(controlAnyProductOnServer);
+            ws.Send(json);
         }
 
         private void Ws_OnMessage(object sender, MessageEventArgs e)

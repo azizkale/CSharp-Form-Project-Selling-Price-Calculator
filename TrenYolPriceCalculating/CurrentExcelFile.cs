@@ -64,6 +64,7 @@ namespace TrenYolPriceCalculating
         private void btnClearSearchTextBox_Click(object sender, EventArgs e)
         {
             txtSearch.Text = "";
+            txtInvoiceAmount.Text = "";
         }
 
         private void güncelleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -165,6 +166,25 @@ namespace TrenYolPriceCalculating
             var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
             e.Graphics.DrawString(rowIdx, new Font("Times Roman", 18, FontStyle.Regular), SystemBrushes.ControlText, headerBounds, centerFormat);
             
+        }
+
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            if(dataGridView1.SelectedRows.Count > 0)
+            {
+                txtSearch.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();               txtInvoiceAmount.Text = "";
+            }
+        }       
+
+        private void cmbKdv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show(cmbKdv.SelectedItem.ToString());
+            string productSellingPrice =dataGridView1.SelectedRows[0].Cells[11].Value.ToString();
+
+            decimal kdvAmount = Decimal.Parse(String.Format("{0:0.##}",cmbKdv.SelectedItem.ToString()));
+            decimal invoiceAmount = Decimal.Parse(String.Format("{0:0.##}",productSellingPrice))*100  /(100M + kdvAmount);
+
+            txtInvoiceAmount.Text = invoiceAmount.ToString("C2");
         }
     }
     

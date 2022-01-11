@@ -9,7 +9,7 @@ namespace TrenYolPriceCalculating
         // to inser columns name and new rows
         public Excel.Worksheet excelFileColumns(Excel.Worksheet worksheet, int rowNumber)
         {
-            //this names are used on OLEDB connection to manipulate the rows(on sql commands)
+            //this names are used on OLEDB connection to be able to manipulate the rows(on sql commands)
             worksheet.Cells[1, 1] = "ID";
             worksheet.Cells[1, 2] = "Urun_Adi";
             worksheet.Cells[1, 3] = "Alis_Fiyati";
