@@ -289,8 +289,8 @@ namespace TrenYolPriceCalculating
         private void webSocketConnection()
         {
             // we use "using" scope to dispose it after using it
-            WebSocket ws = new WebSocket("ws://no100.herokuapp.com");
-            //ws = new WebSocket("ws://localhost:5000");
+            //WebSocket ws = new WebSocket("ws://no100.herokuapp.com");
+            ws = new WebSocket("ws://localhost:5000");
             ws.OnMessage += Ws_OnMessage;
             ws.OnOpen += Ws_OnOpen;       
             ws.Connect();
@@ -299,14 +299,13 @@ namespace TrenYolPriceCalculating
         private void Ws_OnOpen(object sender, EventArgs e)
         {
             Product controlAnyProductOnServer = new Product();
-            controlAnyProductOnServer.ID = "anyID";
-            //ws.Send(JsonSerializer.Serialize(controlAnyProductOnServer));
+            controlAnyProductOnServer.requestInfo = "connectingReq";
+            ws.Send(JsonSerializer.Serialize(controlAnyProductOnServer));
         }
 
         private void Ws_OnMessage(object sender, MessageEventArgs e)
         {
-            TextBox.CheckForIllegalCrossThreadCalls = false; // this is for "Cross-thread operation not valid" error
-            
+            TextBox.CheckForIllegalCrossThreadCalls = false; // this is for "Cross-thread operation not valid" error           
           
             try
             {  // the code below deserializes the data comes from websocket server
@@ -315,13 +314,11 @@ namespace TrenYolPriceCalculating
                 InsertNewRowToExcelFile ins = new InsertNewRowToExcelFile();
                 ins.insertNewRow(productFromWebsocket);
 
-                //senderInfo is changed after saving in PC to delete from file on websocketserver
-                //This is needed to control when receiver in PC is not working(closed)
-                //when the receiver connects to websocket, he/she can get products from webserver which are sended when PC is closed
-                //productFromWebsocket.senderInfo = "fromPC";
-                //productFromWebsocket.ID = "anyID"; // to check Products.txt file in websockert server
-                //string productFromPC = JsonSerializer.Serialize(productFromWebsocket);
-                //ws.Send(productFromPC);
+                // gets data from websocket server, which were sent while PC was close
+                Product controlAnyProductOnServer = new Product();
+                controlAnyProductOnServer.requestInfo ="insertingReq";
+                string json = JsonSerializer.Serialize(controlAnyProductOnServer);
+                ws.Send(json);
             }
             catch (Exception exp)
             {
