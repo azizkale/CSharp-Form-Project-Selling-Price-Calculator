@@ -29,6 +29,8 @@ namespace TrenYolPriceCalculating
             lblSatisFiyatiLabel.Visible = false;
             lblSellingPriceAmount.Visible = false;
             btnProductUpdate.Visible = false;
+            //
+            lblInvoiceLabel.Visible = false;
 
             //if user doesn't update sth, he/she can see menuStrip1
             menuStrip1.Visible = true;
@@ -67,6 +69,9 @@ namespace TrenYolPriceCalculating
         {
             lblSatisFiyatiLabel.Visible = true;
             lblSellingPriceAmount.Visible = true;
+            //
+            //invoie amount 
+            lblInvoiceLabel.Visible = true;
         }
        
         void calculateProductsValues(Product product)
@@ -88,6 +93,7 @@ namespace TrenYolPriceCalculating
                 lblKDVAmount.Text = product.calculateKDVExpenseAmount().ToString("C2");
                 lblProfitAmount.Text = product.calculateprofitAmount().ToString("C2");
                 lblCargoExpenseAmount.Text = product.cargoExpense.ToString("C2");
+                lblInvoieAmount.Text = product.calculateInvoice().ToString("C2");
                 showSellingAndgPrice_Labels();
 
             }
@@ -143,6 +149,9 @@ namespace TrenYolPriceCalculating
 
             numTrenyolComission.Value = 0;
             lblTrenyolComissionAmount.Text = "";
+
+            lblInvoieAmount.Text = "";
+            lblInvoiceLabel.Visible = false;
 
             lblSatisFiyatiLabel.Visible = false;
             lblSellingPriceAmount.Visible = false;

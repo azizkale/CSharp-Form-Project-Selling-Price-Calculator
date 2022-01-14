@@ -68,6 +68,8 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnProductUpdate = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.lblInvoiceLabel = new System.Windows.Forms.Label();
+            this.lblInvoieAmount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numSupplyingPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCargoExpense)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKDV)).BeginInit();
@@ -338,11 +340,23 @@
             resources.ApplyResources(this.notifyIcon1, "notifyIcon1");
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // lblInvoiceLabel
+            // 
+            resources.ApplyResources(this.lblInvoiceLabel, "lblInvoiceLabel");
+            this.lblInvoiceLabel.Name = "lblInvoiceLabel";
+            // 
+            // lblInvoieAmount
+            // 
+            resources.ApplyResources(this.lblInvoieAmount, "lblInvoieAmount");
+            this.lblInvoieAmount.Name = "lblInvoieAmount";
+            // 
             // yenimar
             // 
             this.AcceptButton = this.btnCalculate;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblInvoieAmount);
+            this.Controls.Add(this.lblInvoiceLabel);
             this.Controls.Add(this.btnProductUpdate);
             this.Controls.Add(this.numProfitRate);
             this.Controls.Add(this.numKDV);
@@ -422,6 +436,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Label lblInvoiceLabel;
+        private System.Windows.Forms.Label lblInvoieAmount;
     }
 }
 

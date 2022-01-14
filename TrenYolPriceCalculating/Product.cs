@@ -23,8 +23,11 @@ namespace TrenYolPriceCalculating
         //request info
         public string requestInfo {get; set; }
 
-    //Profit Amount
-    public decimal profitAmount { get; set; }
+        //Profit Amount
+        public decimal profitAmount { get; set; }
+
+        //Invoice Amount
+        public decimal invoiceAmount;
 
         //Methods
         public decimal calculateSellingPrice()
@@ -60,6 +63,12 @@ namespace TrenYolPriceCalculating
         {
             this.profitAmount =  this.totalExpenseAmount * this.profitRate/100;
             return Decimal.Parse(String.Format("{0:0.##}", this.profitAmount));
+        }
+
+        public decimal calculateInvoice()
+        {
+            this.invoiceAmount = (this.calculateSellingPrice() * 100) / (100 + this.KDV);
+            return this.invoiceAmount;
         }
     }
 }

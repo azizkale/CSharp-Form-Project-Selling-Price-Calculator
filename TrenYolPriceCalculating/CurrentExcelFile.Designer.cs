@@ -42,9 +42,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClearSearchTextBox = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtInvoiceAmount = new System.Windows.Forms.TextBox();
-            this.cmbKdv = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.panelSearch.SuspendLayout();
@@ -118,9 +115,6 @@
             // 
             // panelSearch
             // 
-            this.panelSearch.Controls.Add(this.cmbKdv);
-            this.panelSearch.Controls.Add(this.txtInvoiceAmount);
-            this.panelSearch.Controls.Add(this.label2);
             this.panelSearch.Controls.Add(this.pictureBox2);
             this.panelSearch.Controls.Add(this.label1);
             this.panelSearch.Controls.Add(this.btnClearSearchTextBox);
@@ -177,44 +171,6 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1003, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(243, 52);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Birim Fiyat:";
-            // 
-            // txtInvoiceAmount
-            // 
-            this.txtInvoiceAmount.BackColor = System.Drawing.SystemColors.Control;
-            this.txtInvoiceAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtInvoiceAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoiceAmount.Location = new System.Drawing.Point(1251, 0);
-            this.txtInvoiceAmount.Multiline = true;
-            this.txtInvoiceAmount.Name = "txtInvoiceAmount";
-            this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(283, 69);
-            this.txtInvoiceAmount.TabIndex = 11;
-            this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // cmbKdv
-            // 
-            this.cmbKdv.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.cmbKdv.FormattingEnabled = true;
-            this.cmbKdv.Items.AddRange(new object[] {
-            "0",
-            "8",
-            "18"});
-            this.cmbKdv.Location = new System.Drawing.Point(1550, 12);
-            this.cmbKdv.Name = "cmbKdv";
-            this.cmbKdv.Size = new System.Drawing.Size(164, 48);
-            this.cmbKdv.TabIndex = 8;
-            this.cmbKdv.Text = "KDV";
-            this.cmbKdv.SelectedIndexChanged += new System.EventHandler(this.cmbKdv_SelectedIndexChanged);
-            // 
             // CurrentExcelFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -248,8 +204,5 @@
         private System.Windows.Forms.ToolStripMenuItem silToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox txtInvoiceAmount;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbKdv;
     }
 }
